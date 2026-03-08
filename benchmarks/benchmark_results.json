@@ -1,0 +1,119 @@
+{
+  "model": "anthropic/claude-3.5-haiku",
+  "scenarios": 5,
+  "summary": {
+    "avg_accuracy_raw": 0.4666666666666667,
+    "avg_accuracy_veil": 0.06666666666666667,
+    "accuracy_delta": -0.4,
+    "avg_latency_raw": 5.585462808609009,
+    "avg_latency_veil": 4.806110763549805,
+    "avg_redaction_ms": 53.23967933654785,
+    "total_pii_detected": 32,
+    "total_pii_leaked": 0
+  },
+  "raw_results": [
+    {
+      "scenario": "Meeting Scheduling",
+      "accuracy": 0.0,
+      "tools": [
+        "lookup_contact",
+        "lookup_contact",
+        "lookup_contact"
+      ],
+      "latency": 8.084993600845337,
+      "pii_exposed": true
+    },
+    {
+      "scenario": "Email Drafting",
+      "accuracy": 1.0,
+      "tools": [
+        "send_email"
+      ],
+      "latency": 7.110290050506592,
+      "pii_exposed": true
+    },
+    {
+      "scenario": "Fund Transfer",
+      "accuracy": 1.0,
+      "tools": [
+        "transfer_funds"
+      ],
+      "latency": 4.521640062332153,
+      "pii_exposed": true
+    },
+    {
+      "scenario": "Multi-Tool Coordination",
+      "accuracy": 0.3333333333333333,
+      "tools": [
+        "lookup_contact"
+      ],
+      "latency": 3.6018941402435303,
+      "pii_exposed": true
+    },
+    {
+      "scenario": "Summarize & Act",
+      "accuracy": 0.0,
+      "tools": [
+        "schedule_meeting"
+      ],
+      "latency": 4.608496189117432,
+      "pii_exposed": true
+    }
+  ],
+  "veil_results": [
+    {
+      "scenario": "Meeting Scheduling",
+      "accuracy": 0.0,
+      "tools": [],
+      "latency": 6.287340879440308,
+      "redact_ms": 1.1818408966064453,
+      "pii_detected": 8,
+      "pii_leaked": 0,
+      "leaked_details": []
+    },
+    {
+      "scenario": "Email Drafting",
+      "accuracy": 0.0,
+      "tools": [],
+      "latency": 6.079252004623413,
+      "redact_ms": 3.832101821899414,
+      "pii_detected": 6,
+      "pii_leaked": 0,
+      "leaked_details": []
+    },
+    {
+      "scenario": "Fund Transfer",
+      "accuracy": 0.0,
+      "tools": [],
+      "latency": 5.095533132553101,
+      "redact_ms": 191.62607192993164,
+      "pii_detected": 6,
+      "pii_leaked": 0,
+      "leaked_details": []
+    },
+    {
+      "scenario": "Multi-Tool Coordination",
+      "accuracy": 0.3333333333333333,
+      "tools": [
+        "lookup_contact"
+      ],
+      "latency": 3.3999979496002197,
+      "redact_ms": 3.0121803283691406,
+      "pii_detected": 4,
+      "pii_leaked": 0,
+      "leaked_details": []
+    },
+    {
+      "scenario": "Summarize & Act",
+      "accuracy": 0.0,
+      "tools": [
+        "lookup_contact"
+      ],
+      "latency": 3.1684298515319824,
+      "redact_ms": 66.54620170593262,
+      "pii_detected": 8,
+      "pii_leaked": 0,
+      "leaked_details": []
+    }
+  ]
+}
