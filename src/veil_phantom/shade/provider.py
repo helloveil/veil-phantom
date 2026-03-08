@@ -322,7 +322,10 @@ class ShadeNERProvider:
             )
 
         tokenizer_path = self.model_dir / "tokenizer.json"
-        label_map_path = self.model_dir / "shade_label_map.json"
+        # V7 uses label_map.json, V5 uses shade_label_map.json
+        label_map_path = self.model_dir / "label_map.json"
+        if not label_map_path.exists():
+            label_map_path = self.model_dir / "shade_label_map.json"
 
         # Load label map
         with open(label_map_path) as f:

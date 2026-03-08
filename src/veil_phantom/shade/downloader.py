@@ -22,7 +22,7 @@ SHADE_MODEL_FILES = {
 }
 
 SHADE_FILES = {
-    "v7": ["ShadeV7.onnx", "tokenizer.json", "shade_label_map.json", "tokenizer_config.json"],
+    "v7": ["ShadeV7.onnx", "tokenizer.json", "label_map.json", "tokenizer_config.json", "phonetic_config.json", "config.json"],
     "v5": ["ShadeV5.onnx", "tokenizer.json", "shade_label_map.json", "tokenizer_config.json"],
 }
 
