@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "veil-phantom"
-version = "1.0.0"
+version = "1.0.1"
 description = "Privacy-preserving PII redaction for AI pipelines. Real data never leaves your machine."
 readme = "README.md"
 license = "Apache-2.0"

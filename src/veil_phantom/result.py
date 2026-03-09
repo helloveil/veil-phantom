@@ -23,6 +23,18 @@ class RedactedToken:
     semantic_score: float | None = None
     source: DetectionSource = DetectionSource.UNKNOWN
 
+    def to_dict(self) -> dict[str, str | float | None]:
+        """Serialize to a plain dict for logging, debugging, and display."""
+        return {
+            "token": self.token,
+            "type": self.type.value,
+            "original_value": self.original_value,
+            "phantom_value": self.phantom_value,
+            "sensitivity": self.sensitivity.value,
+            "semantic_score": self.semantic_score,
+            "source": self.source.value,
+        }
+
 
 @dataclass
 class RedactionStats:

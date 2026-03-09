@@ -1,0 +1,4 @@
+veil-phantom>=1.0.0
+streamlit
+openai
+python-dotenv

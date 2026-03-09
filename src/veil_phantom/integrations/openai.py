@@ -72,8 +72,9 @@ def veil_chat(
 
 
 # ── Veil system prompt injected into agentic conversations ──
+# Public constant — use this if building a custom agent loop.
 
-_VEIL_AGENT_SYSTEM_SUFFIX = (
+VEIL_AGENT_SYSTEM_SUFFIX = (
     "\n\nIMPORTANT: The user's message contains privacy tokens in the format [TYPE_N] "
     "(e.g. [PERSON_1], [EMAIL_1], [AMOUNT_1], [BANKACCT_1], [ORG_1], [PHONE_1], [DATE_1]). "
     "These tokens are placeholders that the system will replace with real values AFTER you respond. "
@@ -99,6 +100,9 @@ def veil_agent(
     system_prompt: str | None = None,
     max_turns: int = 10,
     dry_run: bool = False,
+    on_redact: Callable[[str, Any], None] | None = None,
+    on_tool_call: Callable[[list], None] | None = None,
+    on_tool_result: Callable[[list], None] | None = None,
     **kwargs: Any,
 ) -> tuple[Any, VeilSession]:
     """Run an agentic tool-calling loop with full VeilPhantom PII protection.
@@ -125,6 +129,9 @@ def veil_agent(
         system_prompt: Base system prompt. Veil instructions are appended automatically.
         max_turns: Safety limit on tool-calling loop iterations.
         dry_run: If True, skip tool execution and return rehydrated args as results.
+        on_redact: Callback(original_text, RedactionResult) fired after each redaction.
+        on_tool_call: Callback(list[RehydratedToolCall]) fired after rehydrating tool args.
+        on_tool_result: Callback(list[tool_result_dicts]) fired after re-redacting tool results.
         **kwargs: Additional arguments passed to client.chat.completions.create().
 
     Returns:
@@ -141,9 +148,11 @@ def veil_agent(
     for msg in messages:
         if msg.get("role") == "system":
             # Append veil instructions to system prompt
-            conv.append({**msg, "content": msg["content"] + _VEIL_AGENT_SYSTEM_SUFFIX})
+            conv.append({**msg, "content": msg["content"] + VEIL_AGENT_SYSTEM_SUFFIX})
         elif msg.get("role") == "user":
             result = session.redact(msg["content"])
+            if on_redact:
+                on_redact(msg["content"], result)
             conv.append({**msg, "content": result.sanitized})
         else:
             conv.append(msg)
@@ -151,7 +160,7 @@ def veil_agent(
     # Ensure there's a system prompt with veil instructions
     if not any(m.get("role") == "system" for m in conv):
         base = system_prompt or "You are a helpful assistant with access to tools."
-        conv.insert(0, {"role": "system", "content": base + _VEIL_AGENT_SYSTEM_SUFFIX})
+        conv.insert(0, {"role": "system", "content": base + VEIL_AGENT_SYSTEM_SUFFIX})
 
     # Agent loop
     for _ in range(max_turns):
@@ -197,7 +206,15 @@ def veil_agent(
                 "args": args,
             })
 
+        if on_tool_call:
+            rehydrated = middleware.rehydrate_tool_calls(parsed_calls)
+            on_tool_call(rehydrated)
+
         tool_results = middleware.process_tool_calls(parsed_calls, tool_registry)
+
+        if on_tool_result:
+            on_tool_result(tool_results)
+
         conv.extend(tool_results)
 
     # Max turns reached — return last response
