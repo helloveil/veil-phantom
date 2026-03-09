@@ -17,13 +17,18 @@ Usage::
 
 from .client import VeilClient
 from .config import RedactionMode, VeilConfig
+from .middleware import RehydratedToolCall, VeilToolMiddleware
 from .result import RedactedToken, RedactionResult, RedactionStats
+from .session import VeilSession
 from .types import DetectionSource, PhantomPools, SensitiveTokenType, SensitivityLevel
 
 __version__ = "1.0.0"
 __all__ = [
     "VeilClient",
     "VeilConfig",
+    "VeilSession",
+    "VeilToolMiddleware",
+    "RehydratedToolCall",
     "RedactionMode",
     "RedactionResult",
     "RedactedToken",

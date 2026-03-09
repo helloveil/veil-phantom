@@ -13,7 +13,7 @@ from veil_phantom import VeilClient, VeilConfig
 # Use regex-only for deterministic tests (no Shade model dependency)
 client = VeilClient(VeilConfig.regex_only())
 
-requires_shade = pytest.mark.skip(reason="Person name detection requires Shade model (not available in regex-only mode)")
+requires_shade = pytest.mark.skip(reason="Requires Shade model for higher-accuracy detection")
 
 
 def _check(input_text: str, must_redact: list[str], must_not_redact: list[str]):
@@ -42,7 +42,6 @@ def _check(input_text: str, must_redact: list[str], must_not_redact: list[str]):
 
 # ── PERSON ──
 
-@requires_shade
 def test_person_full_names():
     _check(
         "Sarah Chen presented the quarterly report. Michael Wong asked about the budget. Lisa Park took notes during the session.",
@@ -58,7 +57,6 @@ def test_person_single_names():
         must_not_redact=["deployment", "code"],
     )
 
-@requires_shade
 def test_person_western_full_names():
     _check(
         "Grant Cardone discussed investment strategies with Robert Kiyosaki and Warren Buffett.",
@@ -66,7 +64,6 @@ def test_person_western_full_names():
         must_not_redact=["investment", "strategies"],
     )
 
-@requires_shade
 def test_person_with_titles():
     _check(
         "Dr. James Smith and Prof. Maria Garcia will lead the workshop.",
@@ -162,7 +159,6 @@ def test_dates_formats():
 
 # ── SCENARIO ──
 
-@requires_shade
 def test_mixed_finance_committee():
     _check(
         "Sarah Chen opened the meeting at 9am. She reported Q3 revenue of $12.5 million, up from $10M last quarter. Michael Wong from Standard Bank confirmed the Series B funding of $25 million is on track. Lisa Park noted that the GlobalTech acquisition, valued at R50 million, needs board approval by January 15th. Contact Michael at michael.wong@standardbank.co.za or call +27 82 555 1234 for updates.",
@@ -197,7 +193,6 @@ def test_fp_business_jargon():
 
 # ── EDGE ──
 
-@requires_shade
 def test_edge_round_trip():
     result = client.redact(
         "Sarah Chen from Goldman Sachs discussed the $25M deal. Contact her at sarah@gs.com or +27 82 555 1234. Deadline is January 15th."
@@ -220,7 +215,6 @@ def test_edge_repeated_names():
         must_not_redact=["plan", "budget", "follow"],
     )
 
-@requires_shade
 def test_edge_adjacent_pii():
     _check(
         "Email john@acme.com, phone 082-555-1234, budget $5M, deadline January 20th, all for Michael Roberts.",

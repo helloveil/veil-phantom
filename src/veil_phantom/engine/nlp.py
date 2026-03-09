@@ -53,6 +53,22 @@ NOT_NAMES: set[str] = {
     "always", "never", "often", "rarely", "seldom", "sometimes",
     "major", "minor", "senior", "junior", "chief", "lead", "head",
     "first", "second", "third", "last", "next", "final", "previous",
+    # Common sentence-starting verbs/words that get capitalized
+    "contact", "please", "dear", "hello", "welcome",
+    "met", "called", "sent", "asked", "told", "said", "got", "had",
+    "saw", "did", "ran", "let", "set", "put", "cut", "hit", "won",
+    "ate", "sat", "led", "paid", "kept", "left", "held", "brought",
+    "thought", "found", "gave", "took", "made", "went", "came",
+    "based", "given", "noted", "discussed", "reviewed", "confirmed",
+    "scheduled", "processed", "completed", "submitted", "approved",
+    "contacted", "transferred", "reported", "flagged", "raised",
+    "transfer", "process", "prepare", "draft", "create", "update",
+    "submit", "review", "check", "verify", "assign", "forward",
+    "attach", "include", "summarize", "schedule", "arrange",
+    "acquisition", "merger", "proposal", "agreement", "contract",
+    "offer", "deal", "transaction", "payment", "invoice", "receipt",
+    "follow", "response", "reply", "confirmation", "notification",
+    "regarding", "concerning", "about", "subject",
 }
 
 # Determiners that can't start an org name
@@ -98,6 +114,22 @@ _SPEAKER_RE = re.compile(r"^SPEAKER_?S?\d+")
 
 # Capitalized multi-word pattern for entity detection
 _CAP_WORD_SEQUENCE_RE = re.compile(r"\b([A-Z][a-zA-Z'-]{2,}(?:\s+[A-Z][a-zA-Z'-]{2,})*)\b")
+
+# Role/title prefixes to strip from person name matches
+_ROLE_PREFIXES: set[str] = {
+    "ceo", "cfo", "cto", "coo", "cmo", "cio", "cso", "cpo",
+    "vp", "svp", "evp", "avp", "md",
+    "dr", "prof", "mr", "mrs", "ms", "sir", "dame",
+    "president", "chairman", "chairwoman", "director", "manager",
+    "chief", "head", "lead", "senior", "junior",
+    "general", "colonel", "captain", "lieutenant", "sergeant",
+    "judge", "justice", "senator", "governor", "mayor",
+    "attorney", "counsel", "minister", "secretary", "ambassador",
+    "commissioner", "inspector", "detective", "officer",
+    # Common action-word prefixes before names
+    "contact", "call", "email", "meet", "ask", "tell", "notify",
+    "dear", "hello", "hi", "welcome", "please",
+}
 
 
 @dataclass
@@ -157,6 +189,13 @@ def is_valid_entity(text: str, entity_type: str, context: str) -> bool:
     if " " not in trimmed and trimmed.endswith("ing") and trimmed[0:1].isupper():
         return False
 
+    # Single-word PERSON must be a known first name to avoid false positives
+    # (e.g., "Reference", "Transfer", "Balance" are not names)
+    if entity_type == "PERSON" and " " not in trimmed:
+        from .data import COMMON_FIRST_NAMES
+        if trimmed not in COMMON_FIRST_NAMES:
+            return False
+
     return True
 
 
@@ -172,8 +211,10 @@ def detect_entities(text: str, whitelist: set[str]) -> list[NLPEntity]:
     for m in _CAP_WORD_SEQUENCE_RE.finditer(text):
         value = m.group(1)
 
-        # Skip if in whitelist
+        # Skip if entity or ANY of its words are in whitelist
         if value.upper() in whitelist:
+            continue
+        if any(w.upper() in whitelist for w in value.split()):
             continue
 
         # Skip if already seen
@@ -184,6 +225,15 @@ def detect_entities(text: str, whitelist: set[str]) -> list[NLPEntity]:
         words = value.split()
         if len(words) == 1 and len(value) < 3:
             continue
+
+        # Strip role/title prefixes from person names
+        # e.g., "CEO Amanda Torres" → "Amanda Torres"
+        stripped_value = value
+        if len(words) > 1 and words[0].lower() in _ROLE_PREFIXES:
+            stripped_value = " ".join(words[1:])
+            words = stripped_value.split()
+            if not words:
+                continue
 
         # Determine type heuristically
         # Multi-word capitalized sequences that contain org keywords → ORG
@@ -196,8 +246,8 @@ def detect_entities(text: str, whitelist: set[str]) -> list[NLPEntity]:
         entity_type = "ORG" if is_org else "PERSON"
 
         # Validate
-        if is_valid_entity(value, entity_type, text):
-            entities.append(NLPEntity(type=entity_type, value=value))
-            seen.add(value.lower())
+        if is_valid_entity(stripped_value, entity_type, text):
+            entities.append(NLPEntity(type=entity_type, value=stripped_value))
+            seen.add(stripped_value.lower())
 
     return entities

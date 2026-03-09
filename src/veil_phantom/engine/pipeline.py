@@ -228,6 +228,12 @@ class RedactionPipeline:
         words = self._text.split()
         for i, word in enumerate(words):
             if word[0:1].isupper() and len(word) > 2 and word.upper() not in WHITELIST:
+                # Skip words that look like currency amounts (R120, $50, etc.)
+                if re.match(r"^[R$€£¥]\d", word):
+                    continue
+                # Skip words that are mostly digits
+                if sum(c.isdigit() for c in word) > len(word) // 2:
+                    continue
                 # Check surrounding words for org context
                 context_window = words[max(0, i - 3):i + 4]
                 for ctx in context_window:
@@ -382,10 +388,12 @@ class RedactionPipeline:
 
                 if use_group1:
                     # For context-dependent patterns, redact the full match
+                    # but store only the core value (group 1) as original_value
                     self._add_redaction_exact(
                         m.group(0), token_type,
                         sensitivity=sensitivity,
                         source=DetectionSource.REGEX,
+                        core_value=value,  # group(1) — just the number/ID
                     )
                 else:
                     self._add_redaction_exact(
@@ -507,8 +515,17 @@ class RedactionPipeline:
         sensitivity: SensitivityLevel = SensitivityLevel.MEDIUM,
         source: DetectionSource = DetectionSource.UNKNOWN,
         display_value: str | None = None,
+        core_value: str | None = None,
     ) -> None:
-        """Add redaction using exact string replacement."""
+        """Add redaction using exact string replacement.
+
+        Args:
+            original: The text to find and replace in the input.
+            core_value: If set, stored as original_value in the token map
+                instead of `original`. Used for context-dependent patterns
+                where the match includes a prefix (e.g., "account 12345")
+                but only the core value ("12345") should be the canonical value.
+        """
         if not original or len(original) < 2:
             return
         if self._is_already_detected(original):
@@ -517,12 +534,13 @@ class RedactionPipeline:
             return
 
         token = self._next_token(token_type)
-        phantom = self._get_phantom(token_type, display_value or original)
+        stored_value = core_value or original
+        phantom = self._get_phantom(token_type, display_value or stored_value)
 
         self._token_map[token] = RedactedToken(
             token=token,
             type=token_type,
-            original_value=original,
+            original_value=stored_value,
             phantom_value=phantom,
             sensitivity=sensitivity,
             source=source,
@@ -530,6 +548,8 @@ class RedactionPipeline:
 
         self._text = self._text.replace(original, token, 1)
         self._mark_detected(original)
+        if core_value:
+            self._mark_detected(core_value)
         self._increment_stat(token_type)
 
     def _increment_stat(self, token_type: SensitiveTokenType) -> None:

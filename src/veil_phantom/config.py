@@ -42,8 +42,12 @@ class VeilConfig:
 
     @classmethod
     def regex_only(cls) -> "VeilConfig":
-        """Regex + contextual layers only, no Shade model needed."""
-        return cls(enable_shade=False, enable_nlp=False)
+        """Regex + NLP + contextual layers, no Shade model needed.
+
+        The NLP layer is pure Python (no external dependencies) and catches
+        person/org names that regex patterns miss.
+        """
+        return cls(enable_shade=False, enable_nlp=True)
 
     @classmethod
     def max_privacy(cls) -> "VeilConfig":

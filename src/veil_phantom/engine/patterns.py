@@ -75,7 +75,7 @@ SPOKEN_EMAIL = re.compile(
     re.IGNORECASE,
 )
 HYBRID_EMAIL = re.compile(
-    r"\b(?!(?:her|his|him|them|their|our|its|the|and|for|but|not|are|was|has|had|get|got|set|let|put|sit|sat|ran|run|hit|cut|bit|did|met|won|ate)\s+at\b)[A-Za-z0-9._%+-]{2,}\s+at\s+[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b",
+    r"\b(?!(?:her|his|him|them|their|our|its|the|and|for|but|not|are|was|has|had|get|got|set|let|put|sit|sat|ran|run|hit|cut|bit|did|met|won|ate)\s+at\b)[A-Za-z0-9._%+-]{2,}\s+at\s+[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b(?!@)",
     re.IGNORECASE,
 )
 

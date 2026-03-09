@@ -1,26 +1,24 @@
 {
-  "model": "anthropic/claude-3.5-haiku",
+  "model": "anthropic/claude-haiku-4.5",
   "scenarios": 5,
   "summary": {
-    "avg_accuracy_raw": 0.4666666666666667,
-    "avg_accuracy_veil": 0.06666666666666667,
-    "accuracy_delta": -0.4,
-    "avg_latency_raw": 5.585462808609009,
-    "avg_latency_veil": 4.806110763549805,
-    "avg_redaction_ms": 53.23967933654785,
-    "total_pii_detected": 32,
+    "avg_accuracy_raw": 1.0,
+    "avg_accuracy_veil": 1.0,
+    "accuracy_delta": 0.0,
+    "avg_latency_raw": 3.0575089931488035,
+    "avg_latency_veil": 2.390369749069214,
+    "avg_redaction_ms": 4.126930236816406,
+    "total_pii_detected": 41,
     "total_pii_leaked": 0
   },
   "raw_results": [
     {
       "scenario": "Meeting Scheduling",
-      "accuracy": 0.0,
+      "accuracy": 1.0,
       "tools": [
-        "lookup_contact",
-        "lookup_contact",
-        "lookup_contact"
+        "schedule_meeting"
       ],
-      "latency": 8.084993600845337,
+      "latency": 3.681267023086548,
       "pii_exposed": true
     },
     {
@@ -29,7 +27,7 @@
       "tools": [
         "send_email"
       ],
-      "latency": 7.110290050506592,
+      "latency": 3.5433290004730225,
       "pii_exposed": true
     },
     {
@@ -38,80 +36,94 @@
       "tools": [
         "transfer_funds"
       ],
-      "latency": 4.521640062332153,
+      "latency": 1.657041072845459,
       "pii_exposed": true
     },
     {
       "scenario": "Multi-Tool Coordination",
-      "accuracy": 0.3333333333333333,
+      "accuracy": 1.0,
       "tools": [
-        "lookup_contact"
+        "lookup_contact",
+        "schedule_meeting",
+        "create_task"
       ],
-      "latency": 3.6018941402435303,
+      "latency": 2.7951669692993164,
       "pii_exposed": true
     },
     {
       "scenario": "Summarize & Act",
-      "accuracy": 0.0,
+      "accuracy": 1.0,
       "tools": [
-        "schedule_meeting"
+        "create_task",
+        "create_task",
+        "create_task"
       ],
-      "latency": 4.608496189117432,
+      "latency": 3.610740900039673,
       "pii_exposed": true
     }
   ],
   "veil_results": [
     {
       "scenario": "Meeting Scheduling",
-      "accuracy": 0.0,
-      "tools": [],
-      "latency": 6.287340879440308,
-      "redact_ms": 1.1818408966064453,
-      "pii_detected": 8,
+      "accuracy": 1.0,
+      "tools": [
+        "schedule_meeting"
+      ],
+      "latency": 1.818373680114746,
+      "redact_ms": 2.0856857299804688,
+      "pii_detected": 10,
       "pii_leaked": 0,
       "leaked_details": []
     },
     {
       "scenario": "Email Drafting",
-      "accuracy": 0.0,
-      "tools": [],
-      "latency": 6.079252004623413,
-      "redact_ms": 3.832101821899414,
-      "pii_detected": 6,
+      "accuracy": 1.0,
+      "tools": [
+        "send_email"
+      ],
+      "latency": 3.2488629817962646,
+      "redact_ms": 2.5110244750976562,
+      "pii_detected": 7,
       "pii_leaked": 0,
       "leaked_details": []
     },
     {
       "scenario": "Fund Transfer",
-      "accuracy": 0.0,
-      "tools": [],
-      "latency": 5.095533132553101,
-      "redact_ms": 191.62607192993164,
+      "accuracy": 1.0,
+      "tools": [
+        "transfer_funds"
+      ],
+      "latency": 1.6310501098632812,
+      "redact_ms": 8.529901504516602,
       "pii_detected": 6,
       "pii_leaked": 0,
       "leaked_details": []
     },
     {
       "scenario": "Multi-Tool Coordination",
-      "accuracy": 0.3333333333333333,
+      "accuracy": 1.0,
       "tools": [
-        "lookup_contact"
+        "lookup_contact",
+        "schedule_meeting",
+        "create_task"
       ],
-      "latency": 3.3999979496002197,
-      "redact_ms": 3.0121803283691406,
-      "pii_detected": 4,
+      "latency": 2.8834099769592285,
+      "redact_ms": 4.203081130981445,
+      "pii_detected": 6,
       "pii_leaked": 0,
       "leaked_details": []
     },
     {
       "scenario": "Summarize & Act",
-      "accuracy": 0.0,
+      "accuracy": 1.0,
       "tools": [
-        "lookup_contact"
+        "create_task",
+        "create_task",
+        "create_task"
       ],
-      "latency": 3.1684298515319824,
-      "redact_ms": 66.54620170593262,
-      "pii_detected": 8,
+      "latency": 2.370151996612549,
+      "redact_ms": 3.3049583435058594,
+      "pii_detected": 12,
       "pii_leaked": 0,
       "leaked_details": []
     }

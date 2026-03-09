@@ -1,0 +1,5144 @@
+{
+  "model": "anthropic/claude-haiku-4.5",
+  "timestamp": "2026-03-09T01:29:49",
+  "verticals": [
+    "financial",
+    "healthcare",
+    "legal",
+    "hr",
+    "sales",
+    "support",
+    "communications",
+    "multi_step"
+  ],
+  "total_scenarios": 50,
+  "summary": {
+    "tool_accuracy_raw": 0.88,
+    "tool_accuracy_veil": 0.94,
+    "accuracy_delta": 0.05999999999999994,
+    "args_quality_raw": 0.8086666666666663,
+    "args_quality_veil": 0.8724285714285714,
+    "avg_latency_raw": 3.4014695262908936,
+    "avg_latency_veil": 3.8379284000396727,
+    "avg_redaction_ms": 6.369991302490234,
+    "total_pii_detected": 381,
+    "total_pii_leaked": 15,
+    "pii_leakage_rate": 0.03937007874015748,
+    "avg_token_preservation": 0.7700808913308913,
+    "pii_by_type": {
+      "ORG": 41,
+      "BANKACCT": 7,
+      "AMOUNT": 61,
+      "PERSON": 125,
+      "EMAIL": 65,
+      "DATE": 40,
+      "PHONE": 22,
+      "GOVID": 6,
+      "SITUATION": 6,
+      "IPADDR": 4,
+      "ADDRESS": 1,
+      "ROLE": 3
+    },
+    "errors_raw": 0,
+    "errors_veil": 0
+  },
+  "results": [
+    {
+      "scenario": "Wire Transfer",
+      "vertical": "financial",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "transfer_funds"
+      ],
+      "tools_expected": [
+        "transfer_funds"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.6719422340393066,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.75,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Johnson & Partners"
+        ],
+        "AMOUNT": [
+          "R2.5 million"
+        ],
+        "BANKACCT": [
+          "62847501234",
+          "GB29 NWBK 6016 1331 9268 19"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1064,
+      "output_tokens": 168
+    },
+    {
+      "scenario": "Wire Transfer",
+      "vertical": "financial",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "transfer_funds"
+      ],
+      "tools_expected": [
+        "transfer_funds"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.956144094467163,
+      "redact_ms": 1.7271041870117188,
+      "pii_detected": 5,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 2,
+        "BANKACCT": 2,
+        "AMOUNT": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Johnson & Partners"
+        ],
+        "AMOUNT": [
+          "R2.5 million"
+        ],
+        "BANKACCT": [
+          "62847501234",
+          "GB29 NWBK 6016 1331 9268 19"
+        ]
+      },
+      "token_preservation": 0.75,
+      "tokens_in_args": 3,
+      "input_tokens": 1352,
+      "output_tokens": 166
+    },
+    {
+      "scenario": "Client Invoice",
+      "vertical": "financial",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_invoice"
+      ],
+      "tools_expected": [
+        "create_invoice"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.810291290283203,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Priya Sharma"
+        ],
+        "ORG": [
+          "Tata Consulting"
+        ],
+        "AMOUNT": [
+          "$47,500"
+        ],
+        "EMAIL": [
+          "priya.sharma@tataconsulting.com"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1068,
+      "output_tokens": 158
+    },
+    {
+      "scenario": "Client Invoice",
+      "vertical": "financial",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_invoice"
+      ],
+      "tools_expected": [
+        "create_invoice"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.512042760848999,
+      "redact_ms": 2.2308826446533203,
+      "pii_detected": 4,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 1,
+        "AMOUNT": 1,
+        "EMAIL": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Priya Sharma"
+        ],
+        "ORG": [
+          "Tata Consulting"
+        ],
+        "AMOUNT": [
+          "$47,500"
+        ],
+        "EMAIL": [
+          "priya.sharma@tataconsulting.com"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 4,
+      "input_tokens": 1351,
+      "output_tokens": 155
+    },
+    {
+      "scenario": "Expense Report",
+      "vertical": "financial",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "submit_expense",
+        "submit_expense"
+      ],
+      "tools_expected": [
+        "submit_expense"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.465325117111206,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.3333333333333333,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "James Okafor"
+        ],
+        "AMOUNT": [
+          "$3,200",
+          "$1,850"
+        ],
+        "CREDITCARD": [
+          "4829"
+        ],
+        "ID": [
+          "EMP-4521"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1072,
+      "output_tokens": 273
+    },
+    {
+      "scenario": "Expense Report",
+      "vertical": "financial",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "submit_expense",
+        "submit_expense"
+      ],
+      "tools_expected": [
+        "submit_expense"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.525601863861084,
+      "redact_ms": 2.6869773864746094,
+      "pii_detected": 3,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.6666666666666666,
+      "pii_by_type": {
+        "PERSON": 1,
+        "AMOUNT": 2
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "James Okafor"
+        ],
+        "AMOUNT": [
+          "$3,200",
+          "$1,850"
+        ],
+        "CREDITCARD": [
+          "4829"
+        ],
+        "ID": [
+          "EMP-4521"
+        ]
+      },
+      "token_preservation": 0.4,
+      "tokens_in_args": 2,
+      "input_tokens": 1363,
+      "output_tokens": 262
+    },
+    {
+      "scenario": "Suspicious Activity",
+      "vertical": "financial",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "flag_transaction"
+      ],
+      "tools_expected": [
+        "flag_transaction"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.510234832763672,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Chen Wei"
+        ],
+        "BANKACCT": [
+          "7789234561"
+        ],
+        "AMOUNT": [
+          "$890,000"
+        ],
+        "ID": [
+          "850612 5234 083"
+        ],
+        "EMAIL": [
+          "compliance@meridianbank.co.za"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1072,
+      "output_tokens": 187
+    },
+    {
+      "scenario": "Suspicious Activity",
+      "vertical": "financial",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "flag_transaction"
+      ],
+      "tools_expected": [
+        "flag_transaction"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.151562213897705,
+      "redact_ms": 2.7589797973632812,
+      "pii_detected": 5,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 2,
+        "AMOUNT": 1,
+        "EMAIL": 1,
+        "BANKACCT": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Chen Wei"
+        ],
+        "BANKACCT": [
+          "7789234561"
+        ],
+        "AMOUNT": [
+          "$890,000"
+        ],
+        "ID": [
+          "850612 5234 083"
+        ],
+        "EMAIL": [
+          "compliance@meridianbank.co.za"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 5,
+      "input_tokens": 1363,
+      "output_tokens": 211
+    },
+    {
+      "scenario": "Loan Application",
+      "vertical": "financial",
+      "mode": "raw",
+      "accuracy": 0.0,
+      "tools_called": [],
+      "tools_expected": [
+        "flag_transaction"
+      ],
+      "tools_missing": [
+        "flag_transaction"
+      ],
+      "tools_extra": [],
+      "latency": 4.162276983261108,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Maria Gonzalez-Rivera",
+          "Roberto Gonzalez"
+        ],
+        "SSN": [
+          "471-83-2956",
+          "523-67-8104"
+        ],
+        "AMOUNT": [
+          "$685,000",
+          "$142,000",
+          "$98,500"
+        ],
+        "ORG": [
+          "Deloitte"
+        ],
+        "PHONE": [
+          "+1-512-555-0147"
+        ],
+        "EMAIL": [
+          "m.gonzalez@protonmail.com"
+        ],
+        "ADDRESS": [
+          "42 Elm Street, Austin TX"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1120,
+      "output_tokens": 275
+    },
+    {
+      "scenario": "Loan Application",
+      "vertical": "financial",
+      "mode": "veil",
+      "accuracy": 0.0,
+      "tools_called": [],
+      "tools_expected": [
+        "flag_transaction"
+      ],
+      "tools_missing": [
+        "flag_transaction"
+      ],
+      "tools_extra": [],
+      "latency": 4.155738115310669,
+      "redact_ms": 3.432035446166992,
+      "pii_detected": 11,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.0,
+      "pii_by_type": {
+        "ORG": 1,
+        "PERSON": 3,
+        "AMOUNT": 3,
+        "EMAIL": 1,
+        "PHONE": 1,
+        "GOVID": 2
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Maria Gonzalez-Rivera",
+          "Roberto Gonzalez"
+        ],
+        "SSN": [
+          "471-83-2956",
+          "523-67-8104"
+        ],
+        "AMOUNT": [
+          "$685,000",
+          "$142,000",
+          "$98,500"
+        ],
+        "ORG": [
+          "Deloitte"
+        ],
+        "PHONE": [
+          "+1-512-555-0147"
+        ],
+        "EMAIL": [
+          "m.gonzalez@protonmail.com"
+        ],
+        "ADDRESS": [
+          "42 Elm Street, Austin TX"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1401,
+      "output_tokens": 226
+    },
+    {
+      "scenario": "International Payment",
+      "vertical": "financial",
+      "mode": "raw",
+      "accuracy": 0.0,
+      "tools_called": [],
+      "tools_expected": [
+        "transfer_funds"
+      ],
+      "tools_missing": [
+        "transfer_funds"
+      ],
+      "tools_extra": [],
+      "latency": 3.9661970138549805,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Takeshi Yamamoto",
+          "Klaus Richter"
+        ],
+        "ORG": [
+          "Nomura Holdings",
+          "Deutsche Bank",
+          "JPMorgan Chase"
+        ],
+        "BANKACCT": [
+          "DE89 3704 0044 0532 0130 00",
+          "JP93 0009 0020 1234 5600 001"
+        ],
+        "AMOUNT": [
+          "EUR 1,250,000"
+        ],
+        "EMAIL": [
+          "takeshi.y@nomura.co.jp",
+          "klaus.richter@deutschebank.de"
+        ],
+        "PHONE": [
+          "+81-3-3278-0500"
+        ],
+        "SWIFT": [
+          "NOMUJPJT",
+          "CHASUS33"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1162,
+      "output_tokens": 295
+    },
+    {
+      "scenario": "International Payment",
+      "vertical": "financial",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "transfer_funds"
+      ],
+      "tools_expected": [
+        "transfer_funds"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.8317010402679443,
+      "redact_ms": 6.474971771240234,
+      "pii_detected": 10,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 2,
+        "BANKACCT": 2,
+        "PERSON": 3,
+        "EMAIL": 2,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Takeshi Yamamoto",
+          "Klaus Richter"
+        ],
+        "ORG": [
+          "Nomura Holdings",
+          "Deutsche Bank",
+          "JPMorgan Chase"
+        ],
+        "BANKACCT": [
+          "DE89 3704 0044 0532 0130 00",
+          "JP93 0009 0020 1234 5600 001"
+        ],
+        "AMOUNT": [
+          "EUR 1,250,000"
+        ],
+        "EMAIL": [
+          "takeshi.y@nomura.co.jp",
+          "klaus.richter@deutschebank.de"
+        ],
+        "PHONE": [
+          "+81-3-3278-0500"
+        ],
+        "SWIFT": [
+          "NOMUJPJT",
+          "CHASUS33"
+        ]
+      },
+      "token_preservation": 0.15384615384615385,
+      "tokens_in_args": 2,
+      "input_tokens": 1424,
+      "output_tokens": 175
+    },
+    {
+      "scenario": "Audit Trail",
+      "vertical": "financial",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "flag_transaction",
+        "flag_transaction",
+        "flag_transaction"
+      ],
+      "tools_expected": [
+        "flag_transaction"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.424410104751587,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.6666666666666666,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Fatima Al-Rashid",
+          "Dmitri Volkov",
+          "Ananya Krishnamurthy",
+          "Sandra Williams"
+        ],
+        "BANKACCT": [
+          "3301-4488-7721",
+          "5509-2233-6645",
+          "8817-3300-1199"
+        ],
+        "ID": [
+          "QA-284719356",
+          "RU-7283104",
+          "9182-7364-5510"
+        ],
+        "AMOUNT": [
+          "$214,000",
+          "\u20ac187,500",
+          "INR 45,00,000"
+        ],
+        "ORG": [
+          "Oceanic Trading LLC",
+          "KPMG"
+        ],
+        "EMAIL": [
+          "sandra.w@kpmg.com"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1203,
+      "output_tokens": 414
+    },
+    {
+      "scenario": "Audit Trail",
+      "vertical": "financial",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "flag_transaction",
+        "flag_transaction",
+        "flag_transaction"
+      ],
+      "tools_expected": [
+        "flag_transaction"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.489959239959717,
+      "redact_ms": 8.860111236572266,
+      "pii_detected": 9,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 2,
+        "PERSON": 4,
+        "AMOUNT": 1,
+        "EMAIL": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Fatima Al-Rashid",
+          "Dmitri Volkov",
+          "Ananya Krishnamurthy",
+          "Sandra Williams"
+        ],
+        "BANKACCT": [
+          "3301-4488-7721",
+          "5509-2233-6645",
+          "8817-3300-1199"
+        ],
+        "ID": [
+          "QA-284719356",
+          "RU-7283104",
+          "9182-7364-5510"
+        ],
+        "AMOUNT": [
+          "$214,000",
+          "\u20ac187,500",
+          "INR 45,00,000"
+        ],
+        "ORG": [
+          "Oceanic Trading LLC",
+          "KPMG"
+        ],
+        "EMAIL": [
+          "sandra.w@kpmg.com"
+        ]
+      },
+      "token_preservation": 0.1875,
+      "tokens_in_args": 3,
+      "input_tokens": 1495,
+      "output_tokens": 427
+    },
+    {
+      "scenario": "Patient Follow-up",
+      "vertical": "healthcare",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "schedule_appointment",
+        "update_patient_record",
+        "order_lab_test"
+      ],
+      "tools_expected": [
+        "schedule_appointment",
+        "order_lab_test",
+        "update_patient_record"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.217806816101074,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Nomsa Dlamini",
+          "Dr. Patel"
+        ],
+        "MEDICAL_ID": [
+          "PAT-20234"
+        ],
+        "PHONE": [
+          "+27 73 456 7890"
+        ],
+        "INSURANCE_ID": [
+          "MA-78452-GH"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1136,
+      "output_tokens": 412
+    },
+    {
+      "scenario": "Patient Follow-up",
+      "vertical": "healthcare",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "schedule_appointment",
+        "update_patient_record",
+        "order_lab_test"
+      ],
+      "tools_expected": [
+        "schedule_appointment",
+        "order_lab_test",
+        "update_patient_record"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.144570827484131,
+      "redact_ms": 11.250972747802734,
+      "pii_detected": 3,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 2,
+        "PHONE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Nomsa Dlamini",
+          "Dr. Patel"
+        ],
+        "MEDICAL_ID": [
+          "PAT-20234"
+        ],
+        "PHONE": [
+          "+27 73 456 7890"
+        ],
+        "INSURANCE_ID": [
+          "MA-78452-GH"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 5,
+      "input_tokens": 1416,
+      "output_tokens": 404
+    },
+    {
+      "scenario": "Specialist Referral",
+      "vertical": "healthcare",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "send_referral"
+      ],
+      "tools_expected": [
+        "send_referral"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 1.850780963897705,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Thabo Mokoena",
+          "Dr. Sarah Goldstein"
+        ],
+        "DATE_OF_BIRTH": [
+          "15 March 1978"
+        ],
+        "NATIONAL_ID": [
+          "780315 5234 083"
+        ],
+        "EMAIL": [
+          "s.goldstein@gsh.org.za"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1122,
+      "output_tokens": 155
+    },
+    {
+      "scenario": "Specialist Referral",
+      "vertical": "healthcare",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "send_referral"
+      ],
+      "tools_expected": [
+        "send_referral"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 1.871901035308838,
+      "redact_ms": 3.367900848388672,
+      "pii_detected": 5,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 3,
+        "EMAIL": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Thabo Mokoena",
+          "Dr. Sarah Goldstein"
+        ],
+        "DATE_OF_BIRTH": [
+          "15 March 1978"
+        ],
+        "NATIONAL_ID": [
+          "780315 5234 083"
+        ],
+        "EMAIL": [
+          "s.goldstein@gsh.org.za"
+        ]
+      },
+      "token_preservation": 0.6,
+      "tokens_in_args": 3,
+      "input_tokens": 1401,
+      "output_tokens": 173
+    },
+    {
+      "scenario": "Lab Orders with History",
+      "vertical": "healthcare",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "order_lab_test"
+      ],
+      "tools_expected": [
+        "order_lab_test"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 1.844513177871704,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Maria Santos",
+          "Dr. Ahmed Patel"
+        ],
+        "INSURANCE_ID": [
+          "DH-445891"
+        ],
+        "PHONE": [
+          "082-555-3344"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1135,
+      "output_tokens": 141
+    },
+    {
+      "scenario": "Lab Orders with History",
+      "vertical": "healthcare",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "order_lab_test"
+      ],
+      "tools_expected": [
+        "order_lab_test"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.0828187465667725,
+      "redact_ms": 3.1952857971191406,
+      "pii_detected": 5,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 4,
+        "PHONE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Maria Santos",
+          "Dr. Ahmed Patel"
+        ],
+        "INSURANCE_ID": [
+          "DH-445891"
+        ],
+        "PHONE": [
+          "082-555-3344"
+        ]
+      },
+      "token_preservation": 0.5,
+      "tokens_in_args": 2,
+      "input_tokens": 1429,
+      "output_tokens": 158
+    },
+    {
+      "scenario": "Emergency Admission",
+      "vertical": "healthcare",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "update_patient_record",
+        "order_lab_test"
+      ],
+      "tools_expected": [
+        "order_lab_test",
+        "update_patient_record"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.365741014480591,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Lindiwe Nkosi",
+          "Sipho Nkosi",
+          "Dr. Fatima Al-Rashid"
+        ],
+        "MEDICAL_ID": [
+          "PAT-90817"
+        ],
+        "INSURANCE_ID": [
+          "BM-336710-X"
+        ],
+        "PHONE": [
+          "+27 82 901 2345"
+        ],
+        "ADDRESS": [
+          "14 Protea Lane, Sandton, 2196"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1198,
+      "output_tokens": 420
+    },
+    {
+      "scenario": "Emergency Admission",
+      "vertical": "healthcare",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "update_patient_record",
+        "order_lab_test"
+      ],
+      "tools_expected": [
+        "order_lab_test",
+        "update_patient_record"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.901515007019043,
+      "redact_ms": 4.015207290649414,
+      "pii_detected": 7,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 5,
+        "ORG": 1,
+        "PHONE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Lindiwe Nkosi",
+          "Sipho Nkosi",
+          "Dr. Fatima Al-Rashid"
+        ],
+        "MEDICAL_ID": [
+          "PAT-90817"
+        ],
+        "INSURANCE_ID": [
+          "BM-336710-X"
+        ],
+        "PHONE": [
+          "+27 82 901 2345"
+        ],
+        "ADDRESS": [
+          "14 Protea Lane, Sandton, 2196"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 8,
+      "input_tokens": 1479,
+      "output_tokens": 395
+    },
+    {
+      "scenario": "Prescription Renewal",
+      "vertical": "healthcare",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "update_patient_record"
+      ],
+      "tools_expected": [
+        "update_patient_record"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.67307710647583,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.6666666666666666,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Rajesh Govender",
+          "Dr. Lerato Molefe"
+        ],
+        "DATE_OF_BIRTH": [
+          "22 August 1965"
+        ],
+        "NATIONAL_ID": [
+          "650822 5198 087"
+        ],
+        "EMAIL": [
+          "r.govender@webmail.co.za"
+        ],
+        "INSURANCE_ID": [
+          "MH-2290054"
+        ],
+        "LICENCE_NUMBER": [
+          "PR-0044231",
+          "RPH-7821"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1206,
+      "output_tokens": 246
+    },
+    {
+      "scenario": "Prescription Renewal",
+      "vertical": "healthcare",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "update_patient_record"
+      ],
+      "tools_expected": [
+        "update_patient_record"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.311783790588379,
+      "redact_ms": 7.122993469238281,
+      "pii_detected": 6,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 4,
+        "EMAIL": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Rajesh Govender",
+          "Dr. Lerato Molefe"
+        ],
+        "DATE_OF_BIRTH": [
+          "22 August 1965"
+        ],
+        "NATIONAL_ID": [
+          "650822 5198 087"
+        ],
+        "EMAIL": [
+          "r.govender@webmail.co.za"
+        ],
+        "INSURANCE_ID": [
+          "MH-2290054"
+        ],
+        "LICENCE_NUMBER": [
+          "PR-0044231",
+          "RPH-7821"
+        ]
+      },
+      "token_preservation": 0.5,
+      "tokens_in_args": 4,
+      "input_tokens": 1487,
+      "output_tokens": 268
+    },
+    {
+      "scenario": "Insurance Pre-Auth",
+      "vertical": "healthcare",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "send_referral"
+      ],
+      "tools_expected": [
+        "send_referral"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.1690099239349365,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Amahle Zulu",
+          "Dr. Jonathan van der Merwe"
+        ],
+        "MEDICAL_ID": [
+          "PAT-55203"
+        ],
+        "NATIONAL_ID": [
+          "910414 0267 085"
+        ],
+        "INSURANCE_ID": [
+          "DH-8834510"
+        ],
+        "PHONE": [
+          "+27 61 778 9012"
+        ],
+        "EMAIL": [
+          "preauth@discovery.co.za"
+        ],
+        "FAX": [
+          "011-539-2800"
+        ],
+        "LICENCE_NUMBER": [
+          "MP-0389216"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1230,
+      "output_tokens": 347
+    },
+    {
+      "scenario": "Insurance Pre-Auth",
+      "vertical": "healthcare",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "send_referral"
+      ],
+      "tools_expected": [
+        "send_referral"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 4.774673938751221,
+      "redact_ms": 4.022121429443359,
+      "pii_detected": 9,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 4,
+        "AMOUNT": 1,
+        "EMAIL": 1,
+        "PHONE": 2,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Amahle Zulu",
+          "Dr. Jonathan van der Merwe"
+        ],
+        "MEDICAL_ID": [
+          "PAT-55203"
+        ],
+        "NATIONAL_ID": [
+          "910414 0267 085"
+        ],
+        "INSURANCE_ID": [
+          "DH-8834510"
+        ],
+        "PHONE": [
+          "+27 61 778 9012"
+        ],
+        "EMAIL": [
+          "preauth@discovery.co.za"
+        ],
+        "FAX": [
+          "011-539-2800"
+        ],
+        "LICENCE_NUMBER": [
+          "MP-0389216"
+        ]
+      },
+      "token_preservation": 0.5555555555555556,
+      "tokens_in_args": 5,
+      "input_tokens": 1517,
+      "output_tokens": 484
+    },
+    {
+      "scenario": "New Litigation",
+      "vertical": "legal",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_case"
+      ],
+      "tools_expected": [
+        "create_case"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.5675570964813232,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Sipho Nkosi",
+          "Adv. Rebecca van der Merwe"
+        ],
+        "ORG": [
+          "GlobalTech SA",
+          "Norton Rose Fulbright"
+        ],
+        "GOVID": [
+          "890412 5123 087"
+        ],
+        "AMOUNT": [
+          "R85,000"
+        ],
+        "CASE_ID": [
+          "LC-2026-0312"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1044,
+      "output_tokens": 224
+    },
+    {
+      "scenario": "New Litigation",
+      "vertical": "legal",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_case"
+      ],
+      "tools_expected": [
+        "create_case"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.433117151260376,
+      "redact_ms": 25.907278060913086,
+      "pii_detected": 7,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 1,
+        "PERSON": 4,
+        "AMOUNT": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Sipho Nkosi",
+          "Adv. Rebecca van der Merwe"
+        ],
+        "ORG": [
+          "GlobalTech SA",
+          "Norton Rose Fulbright"
+        ],
+        "GOVID": [
+          "890412 5123 087"
+        ],
+        "AMOUNT": [
+          "R85,000"
+        ],
+        "CASE_ID": [
+          "LC-2026-0312"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 7,
+      "input_tokens": 1341,
+      "output_tokens": 261
+    },
+    {
+      "scenario": "NDA Clause",
+      "vertical": "legal",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "draft_contract_clause"
+      ],
+      "tools_expected": [
+        "draft_contract_clause"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.1226937770843506,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Nakai Williams",
+          "Park Joon-ho"
+        ],
+        "ORG": [
+          "Veil Technologies",
+          "Samsung Electronics"
+        ],
+        "EMAIL": [
+          "nakai@helloveil.com",
+          "joonho.park@samsung.com"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1009,
+      "output_tokens": 257
+    },
+    {
+      "scenario": "NDA Clause",
+      "vertical": "legal",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "draft_contract_clause"
+      ],
+      "tools_expected": [
+        "draft_contract_clause"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.917802095413208,
+      "redact_ms": 3.3779144287109375,
+      "pii_detected": 4,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 2,
+        "EMAIL": 2
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Nakai Williams",
+          "Park Joon-ho"
+        ],
+        "ORG": [
+          "Veil Technologies",
+          "Samsung Electronics"
+        ],
+        "EMAIL": [
+          "nakai@helloveil.com",
+          "joonho.park@samsung.com"
+        ]
+      },
+      "token_preservation": 0.6666666666666666,
+      "tokens_in_args": 4,
+      "input_tokens": 1291,
+      "output_tokens": 252
+    },
+    {
+      "scenario": "POPIA Compliance",
+      "vertical": "legal",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "file_compliance_report"
+      ],
+      "tools_expected": [
+        "file_compliance_report"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.2840869426727295,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "James Fletcher"
+        ],
+        "ORG": [
+          "MediCare Holdings"
+        ],
+        "EMAIL": [
+          "j.fletcher@medicare.co.za"
+        ],
+        "PHONE": [
+          "+27 11 555 8901"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1033,
+      "output_tokens": 286
+    },
+    {
+      "scenario": "POPIA Compliance",
+      "vertical": "legal",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "file_compliance_report"
+      ],
+      "tools_expected": [
+        "file_compliance_report"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.1582770347595215,
+      "redact_ms": 3.693103790283203,
+      "pii_detected": 4,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 1,
+        "EMAIL": 1,
+        "PHONE": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "James Fletcher"
+        ],
+        "ORG": [
+          "MediCare Holdings"
+        ],
+        "EMAIL": [
+          "j.fletcher@medicare.co.za"
+        ],
+        "PHONE": [
+          "+27 11 555 8901"
+        ]
+      },
+      "token_preservation": 0.75,
+      "tokens_in_args": 3,
+      "input_tokens": 1314,
+      "output_tokens": 242
+    },
+    {
+      "scenario": "Patent Filing",
+      "vertical": "legal",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_case"
+      ],
+      "tools_expected": [
+        "create_case"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.110758066177368,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.75,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Dr. Amara Osei",
+          "Dr. Kenji Watanabe",
+          "Thandi Molefe"
+        ],
+        "ORG": [
+          "NeuroWave Labs",
+          "Adams & Adams"
+        ],
+        "GOVID": [
+          "850617 2234 081"
+        ],
+        "EMAIL": [
+          "kenji.watanabe@neurowave.co.za",
+          "thandi.molefe@adamsadams.com"
+        ],
+        "PHONE": [
+          "+27 21 443 6712"
+        ],
+        "AMOUNT": [
+          "R12,500"
+        ],
+        "CASE_ID": [
+          "ZA-2026-PAT-04871"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1095,
+      "output_tokens": 197
+    },
+    {
+      "scenario": "Patent Filing",
+      "vertical": "legal",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_case"
+      ],
+      "tools_expected": [
+        "create_case"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.1815378665924072,
+      "redact_ms": 7.772922515869141,
+      "pii_detected": 10,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 2,
+        "PERSON": 3,
+        "AMOUNT": 1,
+        "EMAIL": 2,
+        "PHONE": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Dr. Amara Osei",
+          "Dr. Kenji Watanabe",
+          "Thandi Molefe"
+        ],
+        "ORG": [
+          "NeuroWave Labs",
+          "Adams & Adams"
+        ],
+        "GOVID": [
+          "850617 2234 081"
+        ],
+        "EMAIL": [
+          "kenji.watanabe@neurowave.co.za",
+          "thandi.molefe@adamsadams.com"
+        ],
+        "PHONE": [
+          "+27 21 443 6712"
+        ],
+        "AMOUNT": [
+          "R12,500"
+        ],
+        "CASE_ID": [
+          "ZA-2026-PAT-04871"
+        ]
+      },
+      "token_preservation": 0.36363636363636365,
+      "tokens_in_args": 4,
+      "input_tokens": 1365,
+      "output_tokens": 210
+    },
+    {
+      "scenario": "Merger Review",
+      "vertical": "legal",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "file_compliance_report"
+      ],
+      "tools_expected": [
+        "file_compliance_report"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.7558181285858154,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Lindiwe Dlamini",
+          "Ravi Chetty",
+          "Adv. Pieter Botha"
+        ],
+        "ORG": [
+          "SilverBridge Payments",
+          "Naspers Fintech",
+          "ENSafrica",
+          "Competition Commission of South Africa"
+        ],
+        "EMAIL": [
+          "lindiwe@silverbridge.co.za",
+          "ravi.chetty@naspers.com"
+        ],
+        "PHONE": [
+          "+27 12 998 3340"
+        ],
+        "GOVID": [
+          "760923 5098 062"
+        ],
+        "AMOUNT": [
+          "R2.4 billion"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1103,
+      "output_tokens": 334
+    },
+    {
+      "scenario": "Merger Review",
+      "vertical": "legal",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "file_compliance_report"
+      ],
+      "tools_expected": [
+        "file_compliance_report"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.962820053100586,
+      "redact_ms": 7.255077362060547,
+      "pii_detected": 10,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.75,
+      "pii_by_type": {
+        "PERSON": 4,
+        "AMOUNT": 1,
+        "EMAIL": 2,
+        "PHONE": 1,
+        "DATE": 2
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Lindiwe Dlamini",
+          "Ravi Chetty",
+          "Adv. Pieter Botha"
+        ],
+        "ORG": [
+          "SilverBridge Payments",
+          "Naspers Fintech",
+          "ENSafrica",
+          "Competition Commission of South Africa"
+        ],
+        "EMAIL": [
+          "lindiwe@silverbridge.co.za",
+          "ravi.chetty@naspers.com"
+        ],
+        "PHONE": [
+          "+27 12 998 3340"
+        ],
+        "GOVID": [
+          "760923 5098 062"
+        ],
+        "AMOUNT": [
+          "R2.4 billion"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 13,
+      "input_tokens": 1370,
+      "output_tokens": 313
+    },
+    {
+      "scenario": "Settlement Agreement",
+      "vertical": "legal",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "draft_contract_clause"
+      ],
+      "tools_expected": [
+        "draft_contract_clause"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 4.811570167541504,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Zanele Mbeki",
+          "Adv. Farouk Essop",
+          "Priya Naidoo"
+        ],
+        "ORG": [
+          "Deloitte Africa"
+        ],
+        "EMAIL": [
+          "zanele.mbeki@gmail.com",
+          "farouk@essoplaw.co.za",
+          "priya.naidoo@deloitte.co.za"
+        ],
+        "PHONE": [
+          "+27 31 267 4455"
+        ],
+        "GOVID": [
+          "910305 0187 045"
+        ],
+        "AMOUNT": [
+          "R1,250,000",
+          "R500,000",
+          "R375,000"
+        ],
+        "CASE_ID": [
+          "SET-2026-JHB-0098"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1124,
+      "output_tokens": 623
+    },
+    {
+      "scenario": "Settlement Agreement",
+      "vertical": "legal",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "draft_contract_clause"
+      ],
+      "tools_expected": [
+        "draft_contract_clause"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 5.356619119644165,
+      "redact_ms": 6.589174270629883,
+      "pii_detected": 10,
+      "pii_leaked": 1,
+      "leaked_details": [
+        "draft_contract_clause.terms=r375,000"
+      ],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 1,
+        "PERSON": 2,
+        "AMOUNT": 3,
+        "EMAIL": 3,
+        "PHONE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Zanele Mbeki",
+          "Adv. Farouk Essop",
+          "Priya Naidoo"
+        ],
+        "ORG": [
+          "Deloitte Africa"
+        ],
+        "EMAIL": [
+          "zanele.mbeki@gmail.com",
+          "farouk@essoplaw.co.za",
+          "priya.naidoo@deloitte.co.za"
+        ],
+        "PHONE": [
+          "+27 31 267 4455"
+        ],
+        "GOVID": [
+          "910305 0187 045"
+        ],
+        "AMOUNT": [
+          "R1,250,000",
+          "R500,000",
+          "R375,000"
+        ],
+        "CASE_ID": [
+          "SET-2026-JHB-0098"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 15,
+      "input_tokens": 1394,
+      "output_tokens": 568
+    },
+    {
+      "scenario": "New Hire Onboarding",
+      "vertical": "hr",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "onboard_employee"
+      ],
+      "tools_expected": [
+        "onboard_employee"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.5393407344818115,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Aisha Moyo",
+          "Dr. Liam O'Brien"
+        ],
+        "AMOUNT": [
+          "R95,000"
+        ],
+        "EMAIL": [
+          "aisha.moyo@company.co.za"
+        ],
+        "GOVID": [
+          "920815 5678 089"
+        ],
+        "BANKACCT": [
+          "6234 8901 234"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1108,
+      "output_tokens": 211
+    },
+    {
+      "scenario": "New Hire Onboarding",
+      "vertical": "hr",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "onboard_employee"
+      ],
+      "tools_expected": [
+        "onboard_employee"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.711162805557251,
+      "redact_ms": 4.63414192199707,
+      "pii_detected": 7,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 2,
+        "PERSON": 2,
+        "AMOUNT": 1,
+        "EMAIL": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Aisha Moyo",
+          "Dr. Liam O'Brien"
+        ],
+        "AMOUNT": [
+          "R95,000"
+        ],
+        "EMAIL": [
+          "aisha.moyo@company.co.za"
+        ],
+        "GOVID": [
+          "920815 5678 089"
+        ],
+        "BANKACCT": [
+          "6234 8901 234"
+        ]
+      },
+      "token_preservation": 0.8333333333333334,
+      "tokens_in_args": 5,
+      "input_tokens": 1400,
+      "output_tokens": 206
+    },
+    {
+      "scenario": "Salary Adjustment",
+      "vertical": "hr",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "process_payroll_change",
+        "process_payroll_change"
+      ],
+      "tools_expected": [
+        "process_payroll_change"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.9236929416656494,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Brian Walsh",
+          "Yuki Tanaka",
+          "Carlos Mendez"
+        ],
+        "AMOUNT": [
+          "$185,000",
+          "R72,000"
+        ],
+        "EMAIL": [
+          "hr@company.com"
+        ],
+        "EMPID": [
+          "EMP-001",
+          "EMP-234",
+          "EMP-567"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1097,
+      "output_tokens": 359
+    },
+    {
+      "scenario": "Salary Adjustment",
+      "vertical": "hr",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "process_payroll_change",
+        "process_payroll_change"
+      ],
+      "tools_expected": [
+        "process_payroll_change"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.448286771774292,
+      "redact_ms": 3.2351016998291016,
+      "pii_detected": 6,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 2,
+        "AMOUNT": 2,
+        "EMAIL": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Brian Walsh",
+          "Yuki Tanaka",
+          "Carlos Mendez"
+        ],
+        "AMOUNT": [
+          "$185,000",
+          "R72,000"
+        ],
+        "EMAIL": [
+          "hr@company.com"
+        ],
+        "EMPID": [
+          "EMP-001",
+          "EMP-234",
+          "EMP-567"
+        ]
+      },
+      "token_preservation": 0.5555555555555556,
+      "tokens_in_args": 5,
+      "input_tokens": 1388,
+      "output_tokens": 370
+    },
+    {
+      "scenario": "Performance Review",
+      "vertical": "hr",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_performance_review"
+      ],
+      "tools_expected": [
+        "create_performance_review"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.4193978309631348,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Fatima Al-Hassan",
+          "Sarah Chen"
+        ],
+        "EMAIL": [
+          "fatima.alhassan@company.com"
+        ],
+        "PHONE": [
+          "+27 82 334 5567"
+        ],
+        "EMPID": [
+          "EMP-892"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1113,
+      "output_tokens": 178
+    },
+    {
+      "scenario": "Performance Review",
+      "vertical": "hr",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_performance_review"
+      ],
+      "tools_expected": [
+        "create_performance_review"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.3565781116485596,
+      "redact_ms": 4.178047180175781,
+      "pii_detected": 6,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 1,
+        "PERSON": 2,
+        "EMAIL": 1,
+        "PHONE": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Fatima Al-Hassan",
+          "Sarah Chen"
+        ],
+        "EMAIL": [
+          "fatima.alhassan@company.com"
+        ],
+        "PHONE": [
+          "+27 82 334 5567"
+        ],
+        "EMPID": [
+          "EMP-892"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 5,
+      "input_tokens": 1401,
+      "output_tokens": 232
+    },
+    {
+      "scenario": "Termination Process",
+      "vertical": "hr",
+      "mode": "raw",
+      "accuracy": 0.0,
+      "tools_called": [],
+      "tools_expected": [
+        "process_payroll_change"
+      ],
+      "tools_missing": [
+        "process_payroll_change"
+      ],
+      "tools_extra": [],
+      "latency": 4.0243330001831055,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Raj Patel",
+          "Ingrid Bergstr\u00f6m"
+        ],
+        "AMOUNT": [
+          "R128,500",
+          "R31,200"
+        ],
+        "EMAIL": [
+          "raj.patel@company.co.za"
+        ],
+        "GOVID": [
+          "850623 5432 081"
+        ],
+        "BANKACCT": [
+          "1098 7654 321"
+        ],
+        "EMPID": [
+          "EMP-411"
+        ],
+        "PENSIONREF": [
+          "PF-88210443"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1149,
+      "output_tokens": 332
+    },
+    {
+      "scenario": "Termination Process",
+      "vertical": "hr",
+      "mode": "veil",
+      "accuracy": 0.0,
+      "tools_called": [],
+      "tools_expected": [
+        "process_payroll_change"
+      ],
+      "tools_missing": [
+        "process_payroll_change"
+      ],
+      "tools_extra": [],
+      "latency": 4.189573764801025,
+      "redact_ms": 5.323171615600586,
+      "pii_detected": 7,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.0,
+      "pii_by_type": {
+        "ORG": 2,
+        "PERSON": 1,
+        "AMOUNT": 2,
+        "EMAIL": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Raj Patel",
+          "Ingrid Bergstr\u00f6m"
+        ],
+        "AMOUNT": [
+          "R128,500",
+          "R31,200"
+        ],
+        "EMAIL": [
+          "raj.patel@company.co.za"
+        ],
+        "GOVID": [
+          "850623 5432 081"
+        ],
+        "BANKACCT": [
+          "1098 7654 321"
+        ],
+        "EMPID": [
+          "EMP-411"
+        ],
+        "PENSIONREF": [
+          "PF-88210443"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1443,
+      "output_tokens": 351
+    },
+    {
+      "scenario": "Benefits Enrollment",
+      "vertical": "hr",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "onboard_employee"
+      ],
+      "tools_expected": [
+        "onboard_employee"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.3600881099700928,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Priya Naidoo",
+          "Vikram Naidoo",
+          "Anaya Naidoo"
+        ],
+        "GOVID": [
+          "900417 5234 083",
+          "881123 5098 087"
+        ],
+        "EMAIL": [
+          "priya.naidoo@company.co.za"
+        ],
+        "PHONE": [
+          "+27 73 221 8890"
+        ],
+        "AMOUNT": [
+          "R4,850",
+          "R115,000"
+        ],
+        "DOB": [
+          "1988-11-23",
+          "2019-06-15"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1185,
+      "output_tokens": 300
+    },
+    {
+      "scenario": "Benefits Enrollment",
+      "vertical": "hr",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "onboard_employee"
+      ],
+      "tools_expected": [
+        "onboard_employee"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.42397403717041,
+      "redact_ms": 14.381170272827148,
+      "pii_detected": 12,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.8,
+      "pii_by_type": {
+        "ORG": 1,
+        "PERSON": 4,
+        "AMOUNT": 2,
+        "EMAIL": 1,
+        "PHONE": 1,
+        "DATE": 3
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Priya Naidoo",
+          "Vikram Naidoo",
+          "Anaya Naidoo"
+        ],
+        "GOVID": [
+          "900417 5234 083",
+          "881123 5098 087"
+        ],
+        "EMAIL": [
+          "priya.naidoo@company.co.za"
+        ],
+        "PHONE": [
+          "+27 73 221 8890"
+        ],
+        "AMOUNT": [
+          "R4,850",
+          "R115,000"
+        ],
+        "DOB": [
+          "1988-11-23",
+          "2019-06-15"
+        ]
+      },
+      "token_preservation": 0.6363636363636364,
+      "tokens_in_args": 7,
+      "input_tokens": 1468,
+      "output_tokens": 238
+    },
+    {
+      "scenario": "Internal Transfer",
+      "vertical": "hr",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "process_payroll_change"
+      ],
+      "tools_expected": [
+        "process_payroll_change"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.4560840129852295,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Tomoko Hayashi",
+          "Elena Volkov",
+          "Dr. Samuel Okafor"
+        ],
+        "AMOUNT": [
+          "$142,000",
+          "$168,000",
+          "$8,500"
+        ],
+        "EMAIL": [
+          "tomoko.hayashi@company.com"
+        ],
+        "GOVID": [
+          "412-78-9034"
+        ],
+        "BANKACCT": [
+          "7823-4501-9922"
+        ],
+        "EMPID": [
+          "EMP-623",
+          "EMP-102"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1154,
+      "output_tokens": 246
+    },
+    {
+      "scenario": "Internal Transfer",
+      "vertical": "hr",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "process_payroll_change",
+        "process_payroll_change"
+      ],
+      "tools_expected": [
+        "process_payroll_change"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.7236411571502686,
+      "redact_ms": 9.668827056884766,
+      "pii_detected": 9,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.6,
+      "pii_by_type": {
+        "PERSON": 3,
+        "AMOUNT": 3,
+        "EMAIL": 1,
+        "GOVID": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Tomoko Hayashi",
+          "Elena Volkov",
+          "Dr. Samuel Okafor"
+        ],
+        "AMOUNT": [
+          "$142,000",
+          "$168,000",
+          "$8,500"
+        ],
+        "EMAIL": [
+          "tomoko.hayashi@company.com"
+        ],
+        "GOVID": [
+          "412-78-9034"
+        ],
+        "BANKACCT": [
+          "7823-4501-9922"
+        ],
+        "EMPID": [
+          "EMP-623",
+          "EMP-102"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 11,
+      "input_tokens": 1444,
+      "output_tokens": 478
+    },
+    {
+      "scenario": "Disciplinary Action",
+      "vertical": "hr",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_performance_review"
+      ],
+      "tools_expected": [
+        "create_performance_review"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.5659008026123047,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Marcus Thompson",
+          "Dr. Amara Osei"
+        ],
+        "EMAIL": [
+          "marcus.thompson@company.co.uk"
+        ],
+        "PHONE": [
+          "+44 7911 234567"
+        ],
+        "AMOUNT": [
+          "\u00a378,500"
+        ],
+        "GOVID": [
+          "QQ 12 34 56 C"
+        ],
+        "EMPID": [
+          "EMP-758"
+        ],
+        "DATE": [
+          "2025-08-10",
+          "2025-10-22"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1200,
+      "output_tokens": 294
+    },
+    {
+      "scenario": "Disciplinary Action",
+      "vertical": "hr",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_performance_review"
+      ],
+      "tools_expected": [
+        "create_performance_review"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.9172182083129883,
+      "redact_ms": 10.194063186645508,
+      "pii_detected": 7,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 3,
+        "EMAIL": 1,
+        "DATE": 2,
+        "SITUATION": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Marcus Thompson",
+          "Dr. Amara Osei"
+        ],
+        "EMAIL": [
+          "marcus.thompson@company.co.uk"
+        ],
+        "PHONE": [
+          "+44 7911 234567"
+        ],
+        "AMOUNT": [
+          "\u00a378,500"
+        ],
+        "GOVID": [
+          "QQ 12 34 56 C"
+        ],
+        "EMPID": [
+          "EMP-758"
+        ],
+        "DATE": [
+          "2025-08-10",
+          "2025-10-22"
+        ]
+      },
+      "token_preservation": 0.7777777777777778,
+      "tokens_in_args": 7,
+      "input_tokens": 1491,
+      "output_tokens": 332
+    },
+    {
+      "scenario": "Conference Lead",
+      "vertical": "sales",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_lead"
+      ],
+      "tools_expected": [
+        "create_lead"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.094036102294922,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Kenji Yamamoto",
+          "Yuki Sato"
+        ],
+        "ORG": [
+          "Rakuten"
+        ],
+        "EMAIL": [
+          "kenji.yamamoto@rakuten.co.jp"
+        ],
+        "PHONE": [
+          "+81 3 4567 8901"
+        ],
+        "AMOUNT": [
+          "$2.4M"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1026,
+      "output_tokens": 229
+    },
+    {
+      "scenario": "Conference Lead",
+      "vertical": "sales",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_lead"
+      ],
+      "tools_expected": [
+        "create_lead"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.9160971641540527,
+      "redact_ms": 5.573034286499023,
+      "pii_detected": 3,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 1,
+        "AMOUNT": 1,
+        "EMAIL": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Kenji Yamamoto",
+          "Yuki Sato"
+        ],
+        "ORG": [
+          "Rakuten"
+        ],
+        "EMAIL": [
+          "kenji.yamamoto@rakuten.co.jp"
+        ],
+        "PHONE": [
+          "+81 3 4567 8901"
+        ],
+        "AMOUNT": [
+          "$2.4M"
+        ]
+      },
+      "token_preservation": 0.5,
+      "tokens_in_args": 3,
+      "input_tokens": 1306,
+      "output_tokens": 221
+    },
+    {
+      "scenario": "Deal Progression",
+      "vertical": "sales",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "update_deal",
+        "send_proposal"
+      ],
+      "tools_expected": [
+        "send_proposal",
+        "update_deal"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.573936939239502,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Linda Khumalo",
+          "Adrian Gore"
+        ],
+        "ORG": [
+          "Discovery Health"
+        ],
+        "EMAIL": [
+          "linda.khumalo@discovery.co.za"
+        ],
+        "AMOUNT": [
+          "R4.8 million"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1009,
+      "output_tokens": 311
+    },
+    {
+      "scenario": "Deal Progression",
+      "vertical": "sales",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "update_deal",
+        "send_proposal"
+      ],
+      "tools_expected": [
+        "send_proposal",
+        "update_deal"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.0654938220977783,
+      "redact_ms": 6.353139877319336,
+      "pii_detected": 5,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.7142857142857143,
+      "pii_by_type": {
+        "PERSON": 2,
+        "AMOUNT": 1,
+        "EMAIL": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Linda Khumalo",
+          "Adrian Gore"
+        ],
+        "ORG": [
+          "Discovery Health"
+        ],
+        "EMAIL": [
+          "linda.khumalo@discovery.co.za"
+        ],
+        "AMOUNT": [
+          "R4.8 million"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 7,
+      "input_tokens": 1293,
+      "output_tokens": 300
+    },
+    {
+      "scenario": "Lost Deal Analysis",
+      "vertical": "sales",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "update_deal",
+        "create_lead"
+      ],
+      "tools_expected": [
+        "create_lead",
+        "update_deal"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.7521889209747314,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "David Rothenberg",
+          "Zanele Mbeki"
+        ],
+        "ORG": [
+          "Barclays Africa"
+        ],
+        "EMAIL": [
+          "zanele.mbeki@barclays.co.za"
+        ],
+        "PHONE": [
+          "+27 21 555 4432"
+        ],
+        "AMOUNT": [
+          "$1.2M",
+          "$180K"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1019,
+      "output_tokens": 323
+    },
+    {
+      "scenario": "Lost Deal Analysis",
+      "vertical": "sales",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "update_deal",
+        "create_lead"
+      ],
+      "tools_expected": [
+        "create_lead",
+        "update_deal"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.665341854095459,
+      "redact_ms": 7.071018218994141,
+      "pii_detected": 6,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 2,
+        "AMOUNT": 2,
+        "EMAIL": 1,
+        "PHONE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "David Rothenberg",
+          "Zanele Mbeki"
+        ],
+        "ORG": [
+          "Barclays Africa"
+        ],
+        "EMAIL": [
+          "zanele.mbeki@barclays.co.za"
+        ],
+        "PHONE": [
+          "+27 21 555 4432"
+        ],
+        "AMOUNT": [
+          "$1.2M",
+          "$180K"
+        ]
+      },
+      "token_preservation": 0.8571428571428571,
+      "tokens_in_args": 6,
+      "input_tokens": 1298,
+      "output_tokens": 319
+    },
+    {
+      "scenario": "Enterprise Upsell",
+      "vertical": "sales",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "update_deal",
+        "send_proposal"
+      ],
+      "tools_expected": [
+        "send_proposal",
+        "update_deal"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.0799360275268555,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Priya Venkatesh",
+          "Arjun Desai"
+        ],
+        "ORG": [
+          "Infosys"
+        ],
+        "EMAIL": [
+          "priya.venkatesh@infosys.com",
+          "arjun.desai@infosys.com"
+        ],
+        "PHONE": [
+          "+91 80 6123 4567"
+        ],
+        "AMOUNT": [
+          "$3.6M",
+          "$900K"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1072,
+      "output_tokens": 386
+    },
+    {
+      "scenario": "Enterprise Upsell",
+      "vertical": "sales",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "update_deal",
+        "send_proposal"
+      ],
+      "tools_expected": [
+        "send_proposal",
+        "update_deal"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.319693088531494,
+      "redact_ms": 5.076885223388672,
+      "pii_detected": 7,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.8571428571428571,
+      "pii_by_type": {
+        "PERSON": 2,
+        "AMOUNT": 2,
+        "EMAIL": 2,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Priya Venkatesh",
+          "Arjun Desai"
+        ],
+        "ORG": [
+          "Infosys"
+        ],
+        "EMAIL": [
+          "priya.venkatesh@infosys.com",
+          "arjun.desai@infosys.com"
+        ],
+        "PHONE": [
+          "+91 80 6123 4567"
+        ],
+        "AMOUNT": [
+          "$3.6M",
+          "$900K"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 11,
+      "input_tokens": 1343,
+      "output_tokens": 376
+    },
+    {
+      "scenario": "Partner Referral",
+      "vertical": "sales",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_lead"
+      ],
+      "tools_expected": [
+        "create_lead"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.33830189704895,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Mariana Costa e Silva",
+          "Felipe Andrade"
+        ],
+        "ORG": [
+          "Deloitte Brazil",
+          "Petrobras"
+        ],
+        "EMAIL": [
+          "mariana.costa@petrobras.com.br",
+          "felipe.andrade@deloitte.com.br"
+        ],
+        "PHONE": [
+          "+55 21 3224 8800"
+        ],
+        "AMOUNT": [
+          "R$12 million"
+        ],
+        "ID": [
+          "142.567.890-33"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1068,
+      "output_tokens": 304
+    },
+    {
+      "scenario": "Partner Referral",
+      "vertical": "sales",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_lead"
+      ],
+      "tools_expected": [
+        "create_lead"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.7308287620544434,
+      "redact_ms": 4.668951034545898,
+      "pii_detected": 7,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 3,
+        "PERSON": 1,
+        "AMOUNT": 1,
+        "EMAIL": 2
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Mariana Costa e Silva",
+          "Felipe Andrade"
+        ],
+        "ORG": [
+          "Deloitte Brazil",
+          "Petrobras"
+        ],
+        "EMAIL": [
+          "mariana.costa@petrobras.com.br",
+          "felipe.andrade@deloitte.com.br"
+        ],
+        "PHONE": [
+          "+55 21 3224 8800"
+        ],
+        "AMOUNT": [
+          "R$12 million"
+        ],
+        "ID": [
+          "142.567.890-33"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 9,
+      "input_tokens": 1358,
+      "output_tokens": 285
+    },
+    {
+      "scenario": "Competitive Win",
+      "vertical": "sales",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "update_deal"
+      ],
+      "tools_expected": [
+        "update_deal"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.5762057304382324,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Nathalie Dupont",
+          "Marc-Antoine Lefevre"
+        ],
+        "ORG": [
+          "TotalEnergies",
+          "Palantir"
+        ],
+        "EMAIL": [
+          "nathalie.dupont@totalenergies.fr",
+          "marc.lefevre@totalenergies.fr"
+        ],
+        "PHONE": [
+          "+33 1 47 44 5566"
+        ],
+        "AMOUNT": [
+          "EUR 5.2 million"
+        ],
+        "ID": [
+          "TTE-2026-PRV-00871"
+        ],
+        "IBAN": [
+          "FR76 3000 4012 3456 7890 1234 567"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1096,
+      "output_tokens": 303
+    },
+    {
+      "scenario": "Competitive Win",
+      "vertical": "sales",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "update_deal"
+      ],
+      "tools_expected": [
+        "update_deal"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.2879440784454346,
+      "redact_ms": 4.226922988891602,
+      "pii_detected": 6,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.8,
+      "pii_by_type": {
+        "BANKACCT": 1,
+        "PERSON": 1,
+        "AMOUNT": 1,
+        "EMAIL": 2,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Nathalie Dupont",
+          "Marc-Antoine Lefevre"
+        ],
+        "ORG": [
+          "TotalEnergies",
+          "Palantir"
+        ],
+        "EMAIL": [
+          "nathalie.dupont@totalenergies.fr",
+          "marc.lefevre@totalenergies.fr"
+        ],
+        "PHONE": [
+          "+33 1 47 44 5566"
+        ],
+        "AMOUNT": [
+          "EUR 5.2 million"
+        ],
+        "ID": [
+          "TTE-2026-PRV-00871"
+        ],
+        "IBAN": [
+          "FR76 3000 4012 3456 7890 1234 567"
+        ]
+      },
+      "token_preservation": 0.8,
+      "tokens_in_args": 8,
+      "input_tokens": 1352,
+      "output_tokens": 254
+    },
+    {
+      "scenario": "Billing Dispute",
+      "vertical": "support",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_ticket",
+        "process_refund"
+      ],
+      "tools_expected": [
+        "process_refund",
+        "create_ticket"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.8470559120178223,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Grace Nkomo"
+        ],
+        "AMOUNT": [
+          "$299.99"
+        ],
+        "EMAIL": [
+          "grace.nkomo@gmail.com"
+        ],
+        "PHONE": [
+          "+27 82 991 3345"
+        ],
+        "CREDIT_CARD_FRAGMENT": [
+          "7823"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 992,
+      "output_tokens": 393
+    },
+    {
+      "scenario": "Billing Dispute",
+      "vertical": "support",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_ticket",
+        "process_refund"
+      ],
+      "tools_expected": [
+        "process_refund",
+        "create_ticket"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.0191917419433594,
+      "redact_ms": 11.217117309570312,
+      "pii_detected": 3,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "AMOUNT": 1,
+        "EMAIL": 1,
+        "PHONE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Grace Nkomo"
+        ],
+        "AMOUNT": [
+          "$299.99"
+        ],
+        "EMAIL": [
+          "grace.nkomo@gmail.com"
+        ],
+        "PHONE": [
+          "+27 82 991 3345"
+        ],
+        "CREDIT_CARD_FRAGMENT": [
+          "7823"
+        ]
+      },
+      "token_preservation": 0.8,
+      "tokens_in_args": 4,
+      "input_tokens": 1272,
+      "output_tokens": 404
+    },
+    {
+      "scenario": "Service Outage Escalation",
+      "vertical": "support",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_ticket",
+        "escalate_ticket"
+      ],
+      "tools_expected": [
+        "escalate_ticket",
+        "create_ticket"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.8317551612854004,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "ORG": [
+          "Absa Group"
+        ],
+        "PERSON": [
+          "Mohammed Ismail"
+        ],
+        "AMOUNT": [
+          "R12M"
+        ],
+        "PHONE": [
+          "+27 11 350 4000"
+        ],
+        "EMAIL": [
+          "m.ismail@absa.co.za"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1009,
+      "output_tokens": 485
+    },
+    {
+      "scenario": "Service Outage Escalation",
+      "vertical": "support",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_ticket",
+        "escalate_ticket"
+      ],
+      "tools_expected": [
+        "escalate_ticket",
+        "create_ticket"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 4.426580905914307,
+      "redact_ms": 5.331754684448242,
+      "pii_detected": 6,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 2,
+        "PERSON": 1,
+        "AMOUNT": 1,
+        "EMAIL": 1,
+        "PHONE": 1
+      },
+      "expected_pii_types": {
+        "ORG": [
+          "Absa Group"
+        ],
+        "PERSON": [
+          "Mohammed Ismail"
+        ],
+        "AMOUNT": [
+          "R12M"
+        ],
+        "PHONE": [
+          "+27 11 350 4000"
+        ],
+        "EMAIL": [
+          "m.ismail@absa.co.za"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 14,
+      "input_tokens": 1299,
+      "output_tokens": 514
+    },
+    {
+      "scenario": "Product Return",
+      "vertical": "support",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "process_refund"
+      ],
+      "tools_expected": [
+        "process_refund"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 1.9050610065460205,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Anele Zulu"
+        ],
+        "AMOUNT": [
+          "$897"
+        ],
+        "BANK_ACCOUNT": [
+          "6245 7890 123"
+        ],
+        "EMAIL": [
+          "anele@techstartup.co.za"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 984,
+      "output_tokens": 174
+    },
+    {
+      "scenario": "Product Return",
+      "vertical": "support",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "process_refund"
+      ],
+      "tools_expected": [
+        "process_refund"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 2.1157429218292236,
+      "redact_ms": 5.2471160888671875,
+      "pii_detected": 5,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 1,
+        "PERSON": 2,
+        "AMOUNT": 1,
+        "EMAIL": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Anele Zulu"
+        ],
+        "AMOUNT": [
+          "$897"
+        ],
+        "BANK_ACCOUNT": [
+          "6245 7890 123"
+        ],
+        "EMAIL": [
+          "anele@techstartup.co.za"
+        ]
+      },
+      "token_preservation": 0.75,
+      "tokens_in_args": 3,
+      "input_tokens": 1276,
+      "output_tokens": 174
+    },
+    {
+      "scenario": "Account Compromise",
+      "vertical": "support",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_ticket",
+        "escalate_ticket"
+      ],
+      "tools_expected": [
+        "escalate_ticket",
+        "create_ticket"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 4.797327756881714,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Fatima Al-Rashidi"
+        ],
+        "AMOUNT": [
+          "$1,247.50"
+        ],
+        "IP_ADDRESS": [
+          "185.220.101.42",
+          "41.13.252.87"
+        ],
+        "ACCOUNT_ID": [
+          "ACC-8827341"
+        ],
+        "EMAIL": [
+          "fatima.rashidi@outlook.com"
+        ],
+        "PHONE": [
+          "+971 50 884 2219",
+          "+971 55 300 1178"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1085,
+      "output_tokens": 626
+    },
+    {
+      "scenario": "Account Compromise",
+      "vertical": "support",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_ticket",
+        "escalate_ticket"
+      ],
+      "tools_expected": [
+        "escalate_ticket",
+        "create_ticket"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 5.4676783084869385,
+      "redact_ms": 10.93292236328125,
+      "pii_detected": 9,
+      "pii_leaked": 1,
+      "leaked_details": [
+        "create_ticket.description=unauthorized access"
+      ],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 1,
+        "AMOUNT": 1,
+        "EMAIL": 1,
+        "PHONE": 2,
+        "DATE": 1,
+        "IPADDR": 2,
+        "SITUATION": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Fatima Al-Rashidi"
+        ],
+        "AMOUNT": [
+          "$1,247.50"
+        ],
+        "IP_ADDRESS": [
+          "185.220.101.42",
+          "41.13.252.87"
+        ],
+        "ACCOUNT_ID": [
+          "ACC-8827341"
+        ],
+        "EMAIL": [
+          "fatima.rashidi@outlook.com"
+        ],
+        "PHONE": [
+          "+971 50 884 2219",
+          "+971 55 300 1178"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 19,
+      "input_tokens": 1357,
+      "output_tokens": 667
+    },
+    {
+      "scenario": "Subscription Cancellation",
+      "vertical": "support",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_ticket",
+        "process_refund"
+      ],
+      "tools_expected": [
+        "process_refund",
+        "create_ticket"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 4.0023651123046875,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Priya Nair"
+        ],
+        "ORG": [
+          "Blue Ocean Analytics Pvt. Ltd."
+        ],
+        "AMOUNT": [
+          "$149",
+          "$1,788"
+        ],
+        "EMAIL": [
+          "priya.nair@blueocean.in",
+          "priyanair88@gmail.com"
+        ],
+        "PHONE": [
+          "+91 98765 43210"
+        ],
+        "ORDER_ID": [
+          "ORD-2024-30076"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1067,
+      "output_tokens": 537
+    },
+    {
+      "scenario": "Subscription Cancellation",
+      "vertical": "support",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_ticket",
+        "process_refund"
+      ],
+      "tools_expected": [
+        "process_refund",
+        "create_ticket"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 4.732143878936768,
+      "redact_ms": 5.51295280456543,
+      "pii_detected": 6,
+      "pii_leaked": 2,
+      "leaked_details": [
+        "create_ticket.description=$149",
+        "process_refund.amount=$149"
+      ],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 1,
+        "AMOUNT": 2,
+        "EMAIL": 2,
+        "PHONE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Priya Nair"
+        ],
+        "ORG": [
+          "Blue Ocean Analytics Pvt. Ltd."
+        ],
+        "AMOUNT": [
+          "$149",
+          "$1,788"
+        ],
+        "EMAIL": [
+          "priya.nair@blueocean.in",
+          "priyanair88@gmail.com"
+        ],
+        "PHONE": [
+          "+91 98765 43210"
+        ],
+        "ORDER_ID": [
+          "ORD-2024-30076"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 8,
+      "input_tokens": 1346,
+      "output_tokens": 537
+    },
+    {
+      "scenario": "Data Export Request",
+      "vertical": "support",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_ticket",
+        "escalate_ticket"
+      ],
+      "tools_expected": [
+        "escalate_ticket",
+        "create_ticket"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 4.418986797332764,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Thabiso Molefe"
+        ],
+        "NATIONAL_ID": [
+          "9201015800086"
+        ],
+        "PASSPORT": [
+          "M00482190"
+        ],
+        "EMAIL": [
+          "thabiso.molefe@juridica.co.za",
+          "t.molefe@proton.me"
+        ],
+        "PHONE": [
+          "+27 63 441 8823"
+        ],
+        "ADDRESS": [
+          "14 Bree Street, Cape Town, 8001"
+        ],
+        "ORG": [
+          "Juridica Legal Consulting"
+        ],
+        "ACCOUNT_ID": [
+          "CUS-2019-00482"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1093,
+      "output_tokens": 592
+    },
+    {
+      "scenario": "Data Export Request",
+      "vertical": "support",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_ticket",
+        "escalate_ticket"
+      ],
+      "tools_expected": [
+        "escalate_ticket",
+        "create_ticket"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 4.5127341747283936,
+      "redact_ms": 6.700038909912109,
+      "pii_detected": 7,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 2,
+        "EMAIL": 2,
+        "PHONE": 2,
+        "GOVID": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Thabiso Molefe"
+        ],
+        "NATIONAL_ID": [
+          "9201015800086"
+        ],
+        "PASSPORT": [
+          "M00482190"
+        ],
+        "EMAIL": [
+          "thabiso.molefe@juridica.co.za",
+          "t.molefe@proton.me"
+        ],
+        "PHONE": [
+          "+27 63 441 8823"
+        ],
+        "ADDRESS": [
+          "14 Bree Street, Cape Town, 8001"
+        ],
+        "ORG": [
+          "Juridica Legal Consulting"
+        ],
+        "ACCOUNT_ID": [
+          "CUS-2019-00482"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 10,
+      "input_tokens": 1365,
+      "output_tokens": 575
+    },
+    {
+      "scenario": "Meeting Follow-up",
+      "vertical": "communications",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "send_email",
+        "create_task",
+        "create_task"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_task"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.7363460063934326,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.6666666666666666,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Amanda Torres",
+          "Brian Walsh",
+          "Lisa Park"
+        ],
+        "AMOUNT": [
+          "$45M",
+          "$200M"
+        ],
+        "EMAIL": [
+          "a.torres@company.com",
+          "b.walsh@company.com",
+          "l.park@company.com"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 994,
+      "output_tokens": 496
+    },
+    {
+      "scenario": "Meeting Follow-up",
+      "vertical": "communications",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "send_email",
+        "create_task",
+        "create_task"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_task"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 10.539959907531738,
+      "redact_ms": 4.863977432250977,
+      "pii_detected": 10,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 1,
+        "PERSON": 3,
+        "AMOUNT": 2,
+        "EMAIL": 3,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Amanda Torres",
+          "Brian Walsh",
+          "Lisa Park"
+        ],
+        "AMOUNT": [
+          "$45M",
+          "$200M"
+        ],
+        "EMAIL": [
+          "a.torres@company.com",
+          "b.walsh@company.com",
+          "l.park@company.com"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 19,
+      "input_tokens": 1328,
+      "output_tokens": 585
+    },
+    {
+      "scenario": "Client Meeting Setup",
+      "vertical": "communications",
+      "mode": "raw",
+      "accuracy": 0.0,
+      "tools_called": [],
+      "tools_expected": [
+        "send_email",
+        "schedule_meeting"
+      ],
+      "tools_missing": [
+        "send_email",
+        "schedule_meeting"
+      ],
+      "tools_extra": [],
+      "latency": 2.114130973815918,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Ravi Krishnan",
+          "Priya Nair",
+          "Amit Shah"
+        ],
+        "ORG": [
+          "Infosys"
+        ],
+        "EMAIL": [
+          "ravi.krishnan@infosys.com"
+        ],
+        "LOCATION": [
+          "Sandton City"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 981,
+      "output_tokens": 110
+    },
+    {
+      "scenario": "Client Meeting Setup",
+      "vertical": "communications",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "schedule_meeting",
+        "send_email"
+      ],
+      "tools_expected": [
+        "send_email",
+        "schedule_meeting"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.351710081100464,
+      "redact_ms": 4.327297210693359,
+      "pii_detected": 4,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 3,
+        "EMAIL": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Ravi Krishnan",
+          "Priya Nair",
+          "Amit Shah"
+        ],
+        "ORG": [
+          "Infosys"
+        ],
+        "EMAIL": [
+          "ravi.krishnan@infosys.com"
+        ],
+        "LOCATION": [
+          "Sandton City"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 8,
+      "input_tokens": 1263,
+      "output_tokens": 429
+    },
+    {
+      "scenario": "Urgent Memo",
+      "vertical": "communications",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "send_email"
+      ],
+      "tools_expected": [
+        "send_email"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 4.1158058643341064,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.5,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Daniel Botha"
+        ],
+        "EMAIL": [
+          "d.botha@company.co.za",
+          "dpo@company.co.za"
+        ],
+        "IP_ADDRESS": [
+          "192.168.1.105"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 987,
+      "output_tokens": 391
+    },
+    {
+      "scenario": "Urgent Memo",
+      "vertical": "communications",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "send_email",
+        "send_email"
+      ],
+      "tools_expected": [
+        "send_email"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 4.37195611000061,
+      "redact_ms": 4.549980163574219,
+      "pii_detected": 6,
+      "pii_leaked": 3,
+      "leaked_details": [
+        "send_email.subject=security incident",
+        "send_email.body=security incident",
+        "send_email.body=unauthorized access"
+      ],
+      "error": "",
+      "args_quality": 0.5,
+      "pii_by_type": {
+        "PERSON": 1,
+        "EMAIL": 2,
+        "IPADDR": 1,
+        "SITUATION": 2
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Daniel Botha"
+        ],
+        "EMAIL": [
+          "d.botha@company.co.za",
+          "dpo@company.co.za"
+        ],
+        "IP_ADDRESS": [
+          "192.168.1.105"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 10,
+      "input_tokens": 1269,
+      "output_tokens": 541
+    },
+    {
+      "scenario": "Vendor Negotiation",
+      "vertical": "communications",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "send_email",
+        "create_task"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_task"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 5.204832077026367,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Sandra Cheng",
+          "Yusuf Al-Rashidi"
+        ],
+        "ORG": [
+          "Nexora Technologies",
+          "Acme Corp"
+        ],
+        "EMAIL": [
+          "s.cheng@acme-corp.com",
+          "yusuf.alrashidi@nexora.io"
+        ],
+        "AMOUNT": [
+          "$1.2M",
+          "$1.8M",
+          "$1.35M"
+        ],
+        "DATE": [
+          "April 3rd"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1057,
+      "output_tokens": 584
+    },
+    {
+      "scenario": "Vendor Negotiation",
+      "vertical": "communications",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "send_email",
+        "create_task"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_task"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 5.326786041259766,
+      "redact_ms": 2.6290416717529297,
+      "pii_detected": 10,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "PERSON": 4,
+        "AMOUNT": 3,
+        "EMAIL": 2,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Sandra Cheng",
+          "Yusuf Al-Rashidi"
+        ],
+        "ORG": [
+          "Nexora Technologies",
+          "Acme Corp"
+        ],
+        "EMAIL": [
+          "s.cheng@acme-corp.com",
+          "yusuf.alrashidi@nexora.io"
+        ],
+        "AMOUNT": [
+          "$1.2M",
+          "$1.8M",
+          "$1.35M"
+        ],
+        "DATE": [
+          "April 3rd"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 12,
+      "input_tokens": 1334,
+      "output_tokens": 568
+    },
+    {
+      "scenario": "Team Standup",
+      "vertical": "communications",
+      "mode": "raw",
+      "accuracy": 0.0,
+      "tools_called": [],
+      "tools_expected": [
+        "schedule_meeting"
+      ],
+      "tools_missing": [
+        "schedule_meeting"
+      ],
+      "tools_extra": [],
+      "latency": 4.7988622188568115,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Tomoko Hayashi",
+          "Keegan Daniels",
+          "Mariana Oliveira"
+        ],
+        "LOCATION": [
+          "Tokyo",
+          "Cape Town",
+          "S\u00e3o Paulo"
+        ],
+        "URL": [
+          "https://meet.company.com/platform-standup"
+        ],
+        "DATE": [
+          "March 16th"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1024,
+      "output_tokens": 374
+    },
+    {
+      "scenario": "Team Standup",
+      "vertical": "communications",
+      "mode": "veil",
+      "accuracy": 0.0,
+      "tools_called": [],
+      "tools_expected": [
+        "schedule_meeting"
+      ],
+      "tools_missing": [
+        "schedule_meeting"
+      ],
+      "tools_extra": [],
+      "latency": 4.62516188621521,
+      "redact_ms": 8.103132247924805,
+      "pii_detected": 8,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.0,
+      "pii_by_type": {
+        "ORG": 2,
+        "PERSON": 4,
+        "DATE": 1,
+        "ADDRESS": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Tomoko Hayashi",
+          "Keegan Daniels",
+          "Mariana Oliveira"
+        ],
+        "LOCATION": [
+          "Tokyo",
+          "Cape Town",
+          "S\u00e3o Paulo"
+        ],
+        "URL": [
+          "https://meet.company.com/platform-standup"
+        ],
+        "DATE": [
+          "March 16th"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1320,
+      "output_tokens": 320
+    },
+    {
+      "scenario": "Board Report",
+      "vertical": "communications",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "send_email",
+        "create_task"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_task"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.0668821334838867,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.8,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Helen Vogt",
+          "Kwame Asante",
+          "Derek Zimmerman"
+        ],
+        "EMAIL": [
+          "h.vogt@boardmail.org",
+          "k.asante@boardmail.org",
+          "d.zimmerman@truvex.com"
+        ],
+        "AMOUNT": [
+          "$38.7M",
+          "$9.2M",
+          "$22.4M"
+        ],
+        "SSN": [
+          "418-63-7290"
+        ],
+        "ORG": [
+          "Truvex"
+        ],
+        "DATE": [
+          "March 28th"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1069,
+      "output_tokens": 426
+    },
+    {
+      "scenario": "Board Report",
+      "vertical": "communications",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "send_email",
+        "create_task"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_task"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 3.548084020614624,
+      "redact_ms": 8.79216194152832,
+      "pii_detected": 12,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.8,
+      "pii_by_type": {
+        "PERSON": 3,
+        "AMOUNT": 3,
+        "EMAIL": 3,
+        "GOVID": 1,
+        "DATE": 1,
+        "ROLE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Helen Vogt",
+          "Kwame Asante",
+          "Derek Zimmerman"
+        ],
+        "EMAIL": [
+          "h.vogt@boardmail.org",
+          "k.asante@boardmail.org",
+          "d.zimmerman@truvex.com"
+        ],
+        "AMOUNT": [
+          "$38.7M",
+          "$9.2M",
+          "$22.4M"
+        ],
+        "SSN": [
+          "418-63-7290"
+        ],
+        "ORG": [
+          "Truvex"
+        ],
+        "DATE": [
+          "March 28th"
+        ]
+      },
+      "token_preservation": 0.6666666666666666,
+      "tokens_in_args": 8,
+      "input_tokens": 1346,
+      "output_tokens": 413
+    },
+    {
+      "scenario": "Acquisition Workflow",
+      "vertical": "multi_step",
+      "mode": "raw",
+      "accuracy": 0.25,
+      "tools_called": [
+        "lookup_contact",
+        "lookup_contact",
+        "lookup_contact"
+      ],
+      "tools_expected": [
+        "transfer_funds",
+        "create_task",
+        "lookup_contact",
+        "schedule_meeting"
+      ],
+      "tools_missing": [
+        "schedule_meeting",
+        "create_task",
+        "transfer_funds"
+      ],
+      "tools_extra": [],
+      "latency": 1.7985200881958008,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.16666666666666666,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Jack Morrison",
+          "Adv. Thandi Mkhize",
+          "Sarah Chen"
+        ],
+        "AMOUNT": [
+          "$8.5M",
+          "$850K"
+        ],
+        "BANKACCT": [
+          "DE89 3704 0044 0532 0130 00",
+          "6234 5678 901"
+        ],
+        "EMAIL": [
+          "jack@techstart.io"
+        ],
+        "ORG": [
+          "TechStart Inc"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1242,
+      "output_tokens": 162
+    },
+    {
+      "scenario": "Acquisition Workflow",
+      "vertical": "multi_step",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "lookup_contact",
+        "lookup_contact",
+        "lookup_contact",
+        "lookup_contact",
+        "schedule_meeting",
+        "create_task",
+        "create_task",
+        "transfer_funds",
+        "send_email"
+      ],
+      "tools_expected": [
+        "transfer_funds",
+        "create_task",
+        "lookup_contact",
+        "schedule_meeting"
+      ],
+      "tools_missing": [],
+      "tools_extra": [
+        "send_email"
+      ],
+      "latency": 5.644306898117065,
+      "redact_ms": 6.773233413696289,
+      "pii_detected": 11,
+      "pii_leaked": 4,
+      "leaked_details": [
+        "schedule_meeting.agenda=signing",
+        "transfer_funds.reference=techstart",
+        "send_email.body=techstart",
+        "send_email.body=signing"
+      ],
+      "error": "",
+      "args_quality": 0.8333333333333334,
+      "pii_by_type": {
+        "ORG": 4,
+        "BANKACCT": 1,
+        "PERSON": 2,
+        "AMOUNT": 2,
+        "EMAIL": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Jack Morrison",
+          "Adv. Thandi Mkhize",
+          "Sarah Chen"
+        ],
+        "AMOUNT": [
+          "$8.5M",
+          "$850K"
+        ],
+        "BANKACCT": [
+          "DE89 3704 0044 0532 0130 00",
+          "6234 5678 901"
+        ],
+        "EMAIL": [
+          "jack@techstart.io"
+        ],
+        "ORG": [
+          "TechStart Inc"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 26,
+      "input_tokens": 1556,
+      "output_tokens": 985
+    },
+    {
+      "scenario": "Investor Update",
+      "vertical": "multi_step",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_document",
+        "send_email",
+        "schedule_meeting"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_document",
+        "schedule_meeting"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 4.748830080032349,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Sihle Dlamini",
+          "Peter Wright",
+          "Michael Park",
+          "Amanda Torres",
+          "Brian Walsh"
+        ],
+        "AMOUNT": [
+          "$12.3M",
+          "$45M",
+          "$2.1M",
+          "$3.4M"
+        ],
+        "EMAIL": [
+          "s.dlamini@vodacom.co.za",
+          "p.wright@standardbank.co.za",
+          "m.park@sequoia.com"
+        ],
+        "ORG": [
+          "Vodacom",
+          "Standard Bank"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1219,
+      "output_tokens": 659
+    },
+    {
+      "scenario": "Investor Update",
+      "vertical": "multi_step",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_document",
+        "send_email",
+        "schedule_meeting"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_document",
+        "schedule_meeting"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 4.5182976722717285,
+      "redact_ms": 4.005193710327148,
+      "pii_detected": 15,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 4,
+        "PERSON": 3,
+        "AMOUNT": 4,
+        "EMAIL": 3,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Sihle Dlamini",
+          "Peter Wright",
+          "Michael Park",
+          "Amanda Torres",
+          "Brian Walsh"
+        ],
+        "AMOUNT": [
+          "$12.3M",
+          "$45M",
+          "$2.1M",
+          "$3.4M"
+        ],
+        "EMAIL": [
+          "s.dlamini@vodacom.co.za",
+          "p.wright@standardbank.co.za",
+          "m.park@sequoia.com"
+        ],
+        "ORG": [
+          "Vodacom",
+          "Standard Bank"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 28,
+      "input_tokens": 1525,
+      "output_tokens": 669
+    },
+    {
+      "scenario": "Incident Response",
+      "vertical": "multi_step",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_task",
+        "create_task",
+        "create_task",
+        "send_email",
+        "schedule_meeting"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_task",
+        "schedule_meeting"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 5.7189040184021,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Fumani Mthembu",
+          "Daniel Botha",
+          "Advocate Precious Moloi",
+          "Lisa Park",
+          "Amanda Torres"
+        ],
+        "EMAIL": [
+          "f.mthembu@absa.co.za"
+        ],
+        "PHONE": [
+          "+27 11 350 4567"
+        ],
+        "ORG": [
+          "Absa Group"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1240,
+      "output_tokens": 770
+    },
+    {
+      "scenario": "Incident Response",
+      "vertical": "multi_step",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_task",
+        "create_task",
+        "create_task",
+        "send_email",
+        "schedule_meeting"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_task",
+        "schedule_meeting"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 6.230425834655762,
+      "redact_ms": 5.513906478881836,
+      "pii_detected": 11,
+      "pii_leaked": 3,
+      "leaked_details": [
+        "send_email.subject=security incident",
+        "send_email.body=security incident",
+        "schedule_meeting.agenda=security incident"
+      ],
+      "error": "",
+      "args_quality": 1.0,
+      "pii_by_type": {
+        "ORG": 2,
+        "PERSON": 3,
+        "EMAIL": 1,
+        "PHONE": 1,
+        "ROLE": 2,
+        "SITUATION": 2
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Fumani Mthembu",
+          "Daniel Botha",
+          "Advocate Precious Moloi",
+          "Lisa Park",
+          "Amanda Torres"
+        ],
+        "EMAIL": [
+          "f.mthembu@absa.co.za"
+        ],
+        "PHONE": [
+          "+27 11 350 4567"
+        ],
+        "ORG": [
+          "Absa Group"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 11,
+      "input_tokens": 1536,
+      "output_tokens": 837
+    },
+    {
+      "scenario": "Client Onboarding",
+      "vertical": "multi_step",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_document",
+        "schedule_meeting",
+        "create_task",
+        "create_task",
+        "create_task",
+        "send_email"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_task",
+        "create_document",
+        "schedule_meeting"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 6.044628858566284,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.6666666666666666,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Dr. Nalini Kapoor",
+          "Ravi Sundaram",
+          "David Okonkwo",
+          "Maria Fernandez",
+          "Yuki Tanaka"
+        ],
+        "EMAIL": [
+          "n.kapoor@meridianhealth.com",
+          "r.sundaram@meridianhealth.com"
+        ],
+        "PHONE": [
+          "+1 312 555 8901"
+        ],
+        "AMOUNT": [
+          "$4.2M"
+        ],
+        "ORG": [
+          "Meridian Health Systems"
+        ],
+        "ACCOUNTID": [
+          "MHS-2026-0042"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1319,
+      "output_tokens": 1024
+    },
+    {
+      "scenario": "Client Onboarding",
+      "vertical": "multi_step",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_document",
+        "schedule_meeting",
+        "create_task",
+        "create_task",
+        "create_task",
+        "send_email"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_task",
+        "create_document",
+        "schedule_meeting"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 6.716443061828613,
+      "redact_ms": 6.170034408569336,
+      "pii_detected": 11,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.6666666666666666,
+      "pii_by_type": {
+        "PERSON": 6,
+        "AMOUNT": 1,
+        "EMAIL": 2,
+        "PHONE": 1,
+        "DATE": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Dr. Nalini Kapoor",
+          "Ravi Sundaram",
+          "David Okonkwo",
+          "Maria Fernandez",
+          "Yuki Tanaka"
+        ],
+        "EMAIL": [
+          "n.kapoor@meridianhealth.com",
+          "r.sundaram@meridianhealth.com"
+        ],
+        "PHONE": [
+          "+1 312 555 8901"
+        ],
+        "AMOUNT": [
+          "$4.2M"
+        ],
+        "ORG": [
+          "Meridian Health Systems"
+        ],
+        "ACCOUNTID": [
+          "MHS-2026-0042"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 26,
+      "input_tokens": 1598,
+      "output_tokens": 1024
+    },
+    {
+      "scenario": "Quarterly Close",
+      "vertical": "multi_step",
+      "mode": "raw",
+      "accuracy": 0.75,
+      "tools_called": [
+        "create_document",
+        "send_email",
+        "send_email",
+        "schedule_meeting"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_task",
+        "create_document",
+        "schedule_meeting"
+      ],
+      "tools_missing": [
+        "create_task"
+      ],
+      "tools_extra": [],
+      "latency": 5.7014851570129395,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.6666666666666666,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Lindiwe Nkosi",
+          "Dr. Pieter van der Merwe",
+          "Ayesha Patel",
+          "Priya Sharma",
+          "James Oduya",
+          "Zanele Khumalo"
+        ],
+        "EMAIL": [
+          "l.nkosi@sasol.co.za",
+          "p.vandermerwe@board.co.za",
+          "a.patel@board.co.za"
+        ],
+        "AMOUNT": [
+          "$18.7M",
+          "$4.1M",
+          "$5.2M",
+          "$3.8M",
+          "$2.3M"
+        ],
+        "ORG": [
+          "Naspers",
+          "MTN Group",
+          "Sasol"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1382,
+      "output_tokens": 1024
+    },
+    {
+      "scenario": "Quarterly Close",
+      "vertical": "multi_step",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_document",
+        "send_email",
+        "send_email",
+        "schedule_meeting",
+        "create_task"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_task",
+        "create_document",
+        "schedule_meeting"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 5.80234169960022,
+      "redact_ms": 9.654998779296875,
+      "pii_detected": 19,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.8333333333333334,
+      "pii_by_type": {
+        "ORG": 3,
+        "PERSON": 4,
+        "AMOUNT": 5,
+        "EMAIL": 3,
+        "DATE": 4
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Lindiwe Nkosi",
+          "Dr. Pieter van der Merwe",
+          "Ayesha Patel",
+          "Priya Sharma",
+          "James Oduya",
+          "Zanele Khumalo"
+        ],
+        "EMAIL": [
+          "l.nkosi@sasol.co.za",
+          "p.vandermerwe@board.co.za",
+          "a.patel@board.co.za"
+        ],
+        "AMOUNT": [
+          "$18.7M",
+          "$4.1M",
+          "$5.2M",
+          "$3.8M",
+          "$2.3M"
+        ],
+        "ORG": [
+          "Naspers",
+          "MTN Group",
+          "Sasol"
+        ]
+      },
+      "token_preservation": 1.0,
+      "tokens_in_args": 37,
+      "input_tokens": 1666,
+      "output_tokens": 1024
+    },
+    {
+      "scenario": "Employee Offboarding",
+      "vertical": "multi_step",
+      "mode": "raw",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_task",
+        "create_task",
+        "create_task",
+        "schedule_meeting",
+        "send_email",
+        "create_document"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_task",
+        "create_document",
+        "schedule_meeting"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 5.734163284301758,
+      "redact_ms": 0.0,
+      "pii_detected": 0,
+      "pii_leaked": 0,
+      "leaked_details": [],
+      "error": "",
+      "args_quality": 0.8,
+      "pii_by_type": {},
+      "expected_pii_types": {
+        "PERSON": [
+          "Tomasz Kowalski",
+          "Grace Ndlovu",
+          "Fatima Al-Rashidi",
+          "Oscar Mbeki",
+          "Chen Wei"
+        ],
+        "EMAIL": [
+          "t.kowalski@gmail.com"
+        ],
+        "SSN": [
+          "318-42-7956"
+        ],
+        "EMPLOYEEID": [
+          "EMP-7721"
+        ],
+        "AMOUNT": [
+          "$14,200"
+        ],
+        "IPADDR": [
+          "10.0.5.42"
+        ]
+      },
+      "token_preservation": 0.0,
+      "tokens_in_args": 0,
+      "input_tokens": 1325,
+      "output_tokens": 1024
+    },
+    {
+      "scenario": "Employee Offboarding",
+      "vertical": "multi_step",
+      "mode": "veil",
+      "accuracy": 1.0,
+      "tools_called": [
+        "create_task",
+        "create_task",
+        "create_task",
+        "send_email",
+        "schedule_meeting",
+        "create_document"
+      ],
+      "tools_expected": [
+        "send_email",
+        "create_task",
+        "create_document",
+        "schedule_meeting"
+      ],
+      "tools_missing": [],
+      "tools_extra": [],
+      "latency": 6.470855236053467,
+      "redact_ms": 7.849216461181641,
+      "pii_detected": 13,
+      "pii_leaked": 1,
+      "leaked_details": [
+        "schedule_meeting.date=march 27th"
+      ],
+      "error": "",
+      "args_quality": 0.8,
+      "pii_by_type": {
+        "PERSON": 5,
+        "AMOUNT": 1,
+        "EMAIL": 1,
+        "GOVID": 1,
+        "DATE": 4,
+        "IPADDR": 1
+      },
+      "expected_pii_types": {
+        "PERSON": [
+          "Tomasz Kowalski",
+          "Grace Ndlovu",
+          "Fatima Al-Rashidi",
+          "Oscar Mbeki",
+          "Chen Wei"
+        ],
+        "EMAIL": [
+          "t.kowalski@gmail.com"
+        ],
+        "SSN": [
+          "318-42-7956"
+        ],
+        "EMPLOYEEID": [
+          "EMP-7721"
+        ],
+        "AMOUNT": [
+          "$14,200"
+        ],
+        "IPADDR": [
+          "10.0.5.42"
+        ]
+      },
+      "token_preservation": 0.9,
+      "tokens_in_args": 9,
+      "input_tokens": 1614,
+      "output_tokens": 1024
+    }
+  ]
+}
