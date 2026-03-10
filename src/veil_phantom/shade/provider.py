@@ -390,7 +390,7 @@ class ShadeNERProvider:
 
         # Segment rescue: re-run on sentence segments if low detection on long text
         word_count = len(text.split())
-        if word_count > 220 and len(entities) < 3:
+        if word_count > 300 and len(entities) < 2:
             rescued = self._predict_by_segments(text)
             if len(rescued) > len(entities):
                 logger.info("Segment rescue: %d → %d entities", len(entities), len(rescued))
@@ -408,7 +408,12 @@ class ShadeNERProvider:
         return self._deduplicate(normalized)
 
     def _run_best_inference(self, input_ids: list[int], text: str) -> list[ShadeEntity]:
-        """Dual-pass inference: run with phonetics and without, pick best."""
+        """Dual-pass inference: run with phonetics and without, pick best.
+
+        Selection uses confidence gating: zero-phonetic pass is only chosen
+        if it finds MORE entities AND its average confidence exceeds 0.75.
+        This prevents the zero pass from winning with low-quality detections.
+        """
         if not self._has_phonetic_input:
             return self._infer_chunk(input_ids, [1] * len(input_ids))
 
@@ -417,9 +422,16 @@ class ShadeNERProvider:
         # Pass 2: with zero phonetics
         zero_entities = self._infer_chunk(input_ids, [1] * len(input_ids), use_zero_phonetics=True)
 
+        # Confidence-gated selection: zero pass wins only if more entities AND high confidence
         if len(zero_entities) > len(phon_entities):
-            logger.debug("Dual-pass: phonetic=%d, zero=%d → selected zero", len(phon_entities), len(zero_entities))
-            return zero_entities
+            avg_conf = sum(e.confidence for e in zero_entities) / len(zero_entities) if zero_entities else 0
+            if avg_conf > 0.75:
+                logger.debug("Dual-pass: phonetic=%d, zero=%d (avg_conf=%.2f) → selected zero",
+                             len(phon_entities), len(zero_entities), avg_conf)
+                return zero_entities
+            else:
+                logger.debug("Dual-pass: zero has more (%d vs %d) but low confidence (%.2f) → keeping phonetic",
+                             len(zero_entities), len(phon_entities), avg_conf)
         return phon_entities
 
     def _run_chunked_layout(self, core_tokens: list[int], text: str, chunk_size: int) -> list[ShadeEntity]:
@@ -527,6 +539,34 @@ class ShadeNERProvider:
 
         return self._bio_to_entities(input_ids, predictions)
 
+    def _flush_entity(
+        self,
+        entity_type: str,
+        token_ids: list[int],
+        confs: list[float],
+    ) -> ShadeEntity | None:
+        """Flush accumulated BIO tokens into a ShadeEntity.
+
+        Applies minimum confidence filter and comma/semicolon prefix stripping.
+        Returns None if the entity should be rejected.
+        """
+        text = self._decode_tokens(token_ids).strip()
+        if not text:
+            return None
+
+        avg_confidence = sum(confs) / len(confs)
+
+        # Minimum confidence filter — reject low-quality detections
+        if avg_confidence < 0.5:
+            return None
+
+        # Strip leading comma/semicolon/colon (ASR artifacts)
+        text = re.sub(r"^[,;:]+\s*", "", text)
+        if not text:
+            return None
+
+        return ShadeEntity(type=entity_type, value=text, confidence=avg_confidence)
+
     def _bio_to_entities(
         self, input_ids: list[int], predictions: list[tuple[str, float]]
     ) -> list[ShadeEntity]:
@@ -540,13 +580,9 @@ class ShadeNERProvider:
             if label.startswith("B-"):
                 # Flush previous
                 if current_type and current_tokens:
-                    text = self._decode_tokens(current_tokens)
-                    if text.strip():
-                        entities.append(ShadeEntity(
-                            type=current_type,
-                            value=text.strip(),
-                            confidence=sum(current_confs) / len(current_confs),
-                        ))
+                    ent = self._flush_entity(current_type, current_tokens, current_confs)
+                    if ent:
+                        entities.append(ent)
                 current_type = label[2:]
                 current_tokens = [input_ids[i]]
                 current_confs = [conf]
@@ -556,26 +592,18 @@ class ShadeNERProvider:
             else:
                 # Flush
                 if current_type and current_tokens:
-                    text = self._decode_tokens(current_tokens)
-                    if text.strip():
-                        entities.append(ShadeEntity(
-                            type=current_type,
-                            value=text.strip(),
-                            confidence=sum(current_confs) / len(current_confs),
-                        ))
+                    ent = self._flush_entity(current_type, current_tokens, current_confs)
+                    if ent:
+                        entities.append(ent)
                 current_type = None
                 current_tokens = []
                 current_confs = []
 
         # Final flush
         if current_type and current_tokens:
-            text = self._decode_tokens(current_tokens)
-            if text.strip():
-                entities.append(ShadeEntity(
-                    type=current_type,
-                    value=text.strip(),
-                    confidence=sum(current_confs) / len(current_confs),
-                ))
+            ent = self._flush_entity(current_type, current_tokens, current_confs)
+            if ent:
+                entities.append(ent)
 
         return entities
 

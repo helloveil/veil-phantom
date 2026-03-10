@@ -123,6 +123,7 @@ class RedactionPipeline:
     # ── Layer 0: Shade NER ──
 
     def _run_shade_layer(self, entities: list[dict]) -> None:
+        from .nlp import NLP_STOP_WORDS, COMMON_ENGLISH_WORDS
         for ent in entities:
             value = ent.get("value", "").strip()
             ent_type = ent.get("type", "")
@@ -141,6 +142,31 @@ class RedactionPipeline:
             # Skip MONEY — let regex handle (Shade fragments amounts)
             if ent_type == "MONEY":
                 continue
+
+            # Skip Shade PERSON entities that are common words / pronouns
+            # (Shade sometimes hallucates names from filler words)
+            if ent_type == "PERSON":
+                # Skip if contains contractions (e.g. "Like I'm", "It's Aoife")
+                if re.search(r"['\u2019]", value):
+                    continue
+                # Skip single common English words
+                if " " not in value and value.lower() in COMMON_ENGLISH_WORDS:
+                    continue
+                # Skip pronouns and filler words
+                if value in NLP_STOP_WORDS:
+                    continue
+                # Skip ALL-CAPS short tokens (acronyms, not names)
+                if len(value) <= 4 and value == value.upper() and value.isalpha():
+                    continue
+                # Skip multi-word entities where ANY word is a stop word
+                # (Shade ASR artifacts like "Flows The", "Slack Yes", "Webbing You")
+                if " " in value:
+                    words = value.split()
+                    if any(w in NLP_STOP_WORDS or w.lower() in COMMON_ENGLISH_WORDS for w in words):
+                        # Allow if at least one word is a known first name
+                        from .data import COMMON_FIRST_NAMES
+                        if not any(w in COMMON_FIRST_NAMES for w in words):
+                            continue
 
             # Map Shade type to our type
             token_type = self._shade_type_to_token_type(ent_type)
@@ -225,26 +251,45 @@ class RedactionPipeline:
                 )
 
         # Contextual ORG detection (capitalized word near org-context words)
+        # Only triggers for words that look like proper nouns (not common English)
+        from .nlp import NLP_STOP_WORDS, NOT_ORGS, COMMON_ENGLISH_WORDS
         words = self._text.split()
         for i, word in enumerate(words):
-            if word[0:1].isupper() and len(word) > 2 and word.upper() not in WHITELIST:
-                # Skip words that look like currency amounts (R120, $50, etc.)
-                if re.match(r"^[R$€£¥]\d", word):
-                    continue
-                # Skip words that are mostly digits
-                if sum(c.isdigit() for c in word) > len(word) // 2:
-                    continue
-                # Check surrounding words for org context
-                context_window = words[max(0, i - 3):i + 4]
-                for ctx in context_window:
-                    if ctx.lower() in ORG_CONTEXT_WORDS:
-                        if word not in COMMON_FIRST_NAMES:
-                            self._add_redaction(
-                                word, SensitiveTokenType.ORG,
-                                sensitivity=SensitivityLevel.MEDIUM,
-                                source=DetectionSource.GAZETTEER,
-                            )
-                        break
+            # Strip trailing punctuation for checks
+            clean = re.sub(r"[.,;:!?]+$", "", word)
+            if not clean or not clean[0:1].isupper() or len(clean) < 4:
+                continue
+            if clean.upper() in WHITELIST:
+                continue
+            # Skip words that look like currency amounts (R120, $50, etc.)
+            if re.match(r"^[R$€£¥]\d", clean):
+                continue
+            # Skip words that are mostly digits
+            if sum(c.isdigit() for c in clean) > len(clean) // 2:
+                continue
+            # Skip NLP stop words and common English words
+            if clean in NLP_STOP_WORDS:
+                continue
+            if clean.lower() in COMMON_ENGLISH_WORDS:
+                continue
+            if clean.lower() in NOT_ORGS:
+                continue
+            # Skip common first names
+            if clean in COMMON_FIRST_NAMES:
+                continue
+            # Skip already-detected values
+            if self._is_already_detected(clean):
+                continue
+            # Check surrounding words for org context
+            context_window = words[max(0, i - 3):i + 4]
+            for ctx in context_window:
+                if ctx.lower() in ORG_CONTEXT_WORDS:
+                    self._add_redaction(
+                        clean, SensitiveTokenType.ORG,
+                        sensitivity=SensitivityLevel.MEDIUM,
+                        source=DetectionSource.GAZETTEER,
+                    )
+                    break
 
     # ── Layer 1.5: Pre-Regex Critical Patterns ──
 
@@ -277,7 +322,10 @@ class RedactionPipeline:
 
     def _run_nlp_layer(self) -> None:
         whitelist = WHITELIST | {w.upper() for w in (self.config.additional_whitelist or set())}
-        entities = nlp.detect_entities(self._text, whitelist)
+        entities = nlp.detect_entities(
+            self._text, whitelist,
+            already_detected=self._detected_values,
+        )
 
         for ent in entities:
             token_type = (
@@ -341,7 +389,8 @@ class RedactionPipeline:
             # Dates
             (patterns.DATE_MONTH, SensitiveTokenType.DATE, SensitivityLevel.LOW, False),
             (patterns.DATE_NUMERIC, SensitiveTokenType.DATE, SensitivityLevel.LOW, False),
-            (patterns.DATE_RELATIVE, SensitiveTokenType.DATE, SensitivityLevel.LOW, False),
+            # DATE_RELATIVE disabled — "last month", "next week" are NOT PII
+            # (patterns.DATE_RELATIVE, SensitiveTokenType.DATE, SensitivityLevel.LOW, False),
             (patterns.SPOKEN_DATE, SensitiveTokenType.DATE, SensitivityLevel.LOW, False),
             # Financial instruments
             (patterns.CREDIT_CARD, SensitiveTokenType.CARD, SensitivityLevel.CRITICAL, False),

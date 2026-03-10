@@ -21,6 +21,12 @@ TECH_PRODUCTS: set[str] = {
     "twilio", "sendgrid", "mailchimp", "hubspot", "intercom",
     "heroku", "vercel", "netlify", "cloudflare", "fastly",
     "stripe", "plaid", "braintree", "paypal", "adyen",
+    # Social / consumer tech
+    "youtube", "whatsapp", "telegram", "snapchat", "tiktok",
+    "pinterest", "reddit", "discord", "slack", "zoom", "teams",
+    "clickup", "asana", "trello", "jira", "notion", "airtable",
+    "github", "gitlab", "bitbucket", "docker", "chrome", "safari",
+    "firefox", "vscode", "sublime", "atom", "copilot",
 }
 
 ORG_CONTEXT_WORDS: set[str] = {
@@ -48,6 +54,40 @@ COMMON_FIRST_NAMES: set[str] = {
     "Alexander", "Patrick", "Samuel", "Frank", "Raymond", "Jack",
     "Chris", "Christine", "Christopher", "Benjamin", "Stephen",
     "Kai", "Megan", "Bronwyn", "Eva", "Jules", "Grant",
+    # Extended common names (international)
+    "Adam", "Alan", "Alex", "Alice", "Amber", "Andrea", "Anna", "Annie",
+    "Arthur", "Audrey", "Austin", "Barry", "Beth", "Bill", "Billy", "Bob",
+    "Bobby", "Brad", "Brandon", "Brenda", "Brett", "Bruce", "Carl", "Carlos",
+    "Carmen", "Caroline", "Catherine", "Chad", "Charlie", "Charlotte",
+    "Claire", "Colin", "Connor", "Craig", "Curtis", "Dale", "Dana", "Dave",
+    "Dean", "Diana", "Diego", "Don", "Doug", "Drew", "Dylan", "Earl",
+    "Eddie", "Ellen", "Eric", "Erica", "Ethan", "Evan", "Fiona", "Florian",
+    "Fred", "Gary", "Gavin", "Glenn", "Gordon", "Grace", "Greg", "Hank",
+    "Harold", "Harry", "Heather", "Helen", "Henry", "Holly", "Howard",
+    "Hugh", "Ian", "Isaac", "Ivan", "Jacob", "Jake", "Jane", "Janet",
+    "Janice", "Jared", "Jay", "Jean", "Jeff", "Jenny", "Jim", "Jimmy",
+    "Joan", "Joe", "Joel", "Jon", "Jonathan", "Jordan", "Joyce", "Judy",
+    "Julia", "Julie", "Justin", "Kate", "Kelly", "Ken", "Kim", "Kyle",
+    "Larry", "Lauren", "Lee", "Leo", "Leslie", "Liam", "Liz", "Logan",
+    "Lori", "Louis", "Luke", "Lynn", "Mandy", "Marcus", "Maria", "Marie",
+    "Martin", "Max", "Mia", "Mike", "Molly", "Monica", "Morgan", "Nathan",
+    "Neil", "Nick", "Nicole", "Noah", "Nora", "Oliver", "Oscar", "Owen",
+    "Pam", "Phil", "Rachel", "Ralph", "Randy", "Ray", "Rita", "Rob",
+    "Robin", "Roger", "Ron", "Ross", "Roy", "Ruby", "Russell", "Ruth",
+    "Ryan", "Sally", "Sam", "Scott", "Sean", "Shane", "Shawn", "Simon",
+    "Sophia", "Sophie", "Spencer", "Stan", "Stuart", "Sue", "Ted", "Terry",
+    "Tim", "Todd", "Tom", "Tony", "Tracy", "Travis", "Troy", "Tyler",
+    "Victor", "Vincent", "Vivian", "Walter", "Warren", "Wayne", "Wendy",
+    "Wesley", "Yuki", "Zach", "Zara",
+    # South African / African names
+    "Thabo", "Sipho", "Bongani", "Nomsa", "Zanele", "Mandla", "Lungelo",
+    "Nhlanhla", "Themba", "Lindiwe", "Nokuthula", "Sibusiso", "Lerato",
+    "Tshepiso", "Palesa", "Kagiso", "Tshepo", "Mpho", "Naledi", "Nandi",
+    "Pieter", "Johan", "Willem", "Hendrik", "Gerhard", "Francois", "Riaan",
+    "Charl", "Jannie", "Kobus", "Annelie", "Hannelie", "Elsa", "Marelize",
+    # Irish / Celtic
+    "Aoife", "Ciara", "Niamh", "Siobhan", "Saoirse", "Padraig", "Cormac",
+    "Declan", "Ronan", "Liam", "Roisin", "Aisling", "Caoimhe", "Eoin",
 }
 
 PUBLIC_COMPANIES: list[str] = [

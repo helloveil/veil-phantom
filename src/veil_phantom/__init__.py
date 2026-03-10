@@ -22,7 +22,7 @@ from .result import RedactedToken, RedactionResult, RedactionStats
 from .session import VeilSession
 from .types import DetectionSource, PhantomPools, SensitiveTokenType, SensitivityLevel
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 __all__ = [
     "VeilClient",
     "VeilConfig",
